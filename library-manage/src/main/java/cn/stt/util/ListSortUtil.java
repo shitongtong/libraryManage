@@ -8,13 +8,13 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * ÕâÊÇÒ»¸ö×Ô¶¨ÒåÅÅĞòµÄÀà£¬×¨ÃÅÕë¶ÔÁĞ±í£¨List£©ÖĞµÄÊı¾İ½øĞĞÅÅĞò£»¿É°´Ö¸¶¨·½·¨½øĞĞ¡£
- * Ä¿Ç°ÊµÏÖ¶Ô×Ö·û´®£¨String£©¡¢ÈÕÆÚ£¨Date£©¡¢ÕûĞÍ£¨Integer£©µÈÈıÖÖ¶ÔÏó½øĞĞÅÅĞò¡£
+ * è¿™æ˜¯ä¸€ä¸ªè‡ªå®šä¹‰æ’åºçš„ç±»ï¼Œä¸“é—¨é’ˆå¯¹åˆ—è¡¨ï¼ˆListï¼‰ä¸­çš„æ•°æ®è¿›è¡Œæ’åºï¼›å¯æŒ‰æŒ‡å®šæ–¹æ³•è¿›è¡Œã€‚
+ * ç›®å‰å®ç°å¯¹å­—ç¬¦ä¸²ï¼ˆStringï¼‰ã€æ—¥æœŸï¼ˆDateï¼‰ã€æ•´å‹ï¼ˆIntegerï¼‰ç­‰ä¸‰ç§å¯¹è±¡è¿›è¡Œæ’åºã€‚
  * Created by stt on 2016/9/3.
  */
 public class ListSortUtil<E> {
     /**
-     * ¶ÔÁĞ±íÖĞµÄÊı¾İ°´Ö¸¶¨×Ö¶Î½øĞĞÅÅĞò¡£ÒªÇóÀà±ØĞëÓĞÏà¹ØµÄ·½·¨·µ»Ø×Ö·û´®¡¢ÕûĞÍ¡¢ÈÕÆÚµÈÖµÒÔ½øĞĞ±È½Ï¡£
+     * å¯¹åˆ—è¡¨ä¸­çš„æ•°æ®æŒ‰æŒ‡å®šå­—æ®µè¿›è¡Œæ’åºã€‚è¦æ±‚ç±»å¿…é¡»æœ‰ç›¸å…³çš„æ–¹æ³•è¿”å›å­—ç¬¦ä¸²ã€æ•´å‹ã€æ—¥æœŸç­‰å€¼ä»¥è¿›è¡Œæ¯”è¾ƒã€‚
      * @param list
      * @param method
      * @param reverseFlag
@@ -31,10 +31,10 @@ public class ListSortUtil<E> {
                     Object obj1 = m1.invoke(((E) arg1), null);
                     Object obj2 = m2.invoke(((E) arg2), null);
                     if (obj1 instanceof String) {
-                        // ×Ö·û´®
+                        // å­—ç¬¦ä¸²
                         result = obj1.toString().compareTo(obj2.toString());
                     } else if (obj1 instanceof Date) {
-                        // ÈÕÆÚ
+                        // æ—¥æœŸ
                         long l = ((Date) obj1).getTime() - ((Date) obj2).getTime();
                         if (l > 0) {
                             result = 1;
@@ -44,17 +44,17 @@ public class ListSortUtil<E> {
                             result = 0;
                         }
                     } else if (obj1 instanceof Integer) {
-                        // ÕûĞÍ£¨MethodµÄ·µ»Ø²ÎÊı¿ÉÒÔÊÇintµÄ£¬ÒòÎªJDK1.5Ö®ºó£¬IntegerÓëint¿ÉÒÔ×Ô¶¯×ª»»ÁË£©
+                        // æ•´å‹ï¼ˆMethodçš„è¿”å›å‚æ•°å¯ä»¥æ˜¯intçš„ï¼Œå› ä¸ºJDK1.5ä¹‹åï¼ŒIntegerä¸intå¯ä»¥è‡ªåŠ¨è½¬æ¢äº†ï¼‰
                         result = (Integer) obj1 - (Integer) obj2;
                     } else {
-                        // Ä¿Ç°ÉĞ²»Ö§³ÖµÄ¶ÔÏó£¬Ö±½Ó×ª»»ÎªString£¬È»ºó±È½Ï£¬ºó¹ûÎ´Öª
+                        // ç›®å‰å°šä¸æ”¯æŒçš„å¯¹è±¡ï¼Œç›´æ¥è½¬æ¢ä¸ºStringï¼Œç„¶åæ¯”è¾ƒï¼ŒåæœæœªçŸ¥
                         result = obj1.toString().compareTo(obj2.toString());
 
-                        System.err.println("ListSortUtil.sortByMethod·½·¨½ÓÊÜµ½²»¿ÉÊ¶±ğµÄ¶ÔÏóÀàĞÍ£¬×ª»»Îª×Ö·û´®ºó±È½Ï·µ»Ø...");
+                        System.err.println("ListSortUtil.sortByMethodæ–¹æ³•æ¥å—åˆ°ä¸å¯è¯†åˆ«çš„å¯¹è±¡ç±»å‹ï¼Œè½¬æ¢ä¸ºå­—ç¬¦ä¸²åæ¯”è¾ƒè¿”å›...");
                     }
 
                     if (reverseFlag) {
-                        // µ¹Ğò
+                        // å€’åº
                         result = -result;
                     }
                 } catch (NoSuchMethodException nsme) {
@@ -97,11 +97,11 @@ public class ListSortUtil<E> {
                     }else if (invoke1 instanceof Integer){
                         result = (Integer)invoke1 - (Integer)invoke2;
                     }else{
-                        // Ä¿Ç°ÉĞ²»Ö§³ÖµÄ¶ÔÏó£¬Ö±½Ó×ª»»ÎªString£¬È»ºó±È½Ï£¬ºó¹ûÎ´Öª
+                        // ç›®å‰å°šä¸æ”¯æŒçš„å¯¹è±¡ï¼Œç›´æ¥è½¬æ¢ä¸ºStringï¼Œç„¶åæ¯”è¾ƒï¼ŒåæœæœªçŸ¥
                         result = invoke1.toString().compareTo(invoke2.toString());
-                        System.err.println("ListSortUtil.sortByMethod·½·¨½ÓÊÜµ½²»¿ÉÊ¶±ğµÄ¶ÔÏóÀàĞÍ£¬×ª»»Îª×Ö·û´®ºó±È½Ï·µ»Ø...");
+                        System.err.println("ListSortUtil.sortByMethodæ–¹æ³•æ¥å—åˆ°ä¸å¯è¯†åˆ«çš„å¯¹è±¡ç±»å‹ï¼Œè½¬æ¢ä¸ºå­—ç¬¦ä¸²åæ¯”è¾ƒè¿”å›...");
                     }
-                    if(reverseFlag){//µ¹ĞòÅÅÁĞ
+                    if(reverseFlag){//å€’åºæ’åˆ—
                         result = -result;
                     }
                 } catch (NoSuchMethodException e) {
