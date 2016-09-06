@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.stt</groupId>
+    <artifactId>document-preview-sys</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.servlets/cos -->
+        <dependency>
+            <groupId>com.servlets</groupId>
+            <artifactId>cos</artifactId>
+            <version>05Nov2002</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.artofsolving/jodconverter -->
+        <dependency>
+            <groupId>com.artofsolving</groupId>
+            <artifactId>jodconverter</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openoffice/jurt -->
+        <dependency>
+            <groupId>org.openoffice</groupId>
+            <artifactId>jurt</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.9</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openoffice/ridl -->
+        <dependency>
+            <groupId>org.openoffice</groupId>
+            <artifactId>ridl</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openoffice/juh -->
+        <dependency>
+            <groupId>org.openoffice</groupId>
+            <artifactId>juh</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openoffice/unoil -->
+        <dependency>
+            <groupId>org.openoffice</groupId>
+            <artifactId>unoil</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-jdk14 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>mvnrepository</id>
+            <name>mvnrepository</name>
+            <url>http://www.mvnrepository.com/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+</project>
