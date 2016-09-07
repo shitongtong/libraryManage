@@ -4,7 +4,9 @@ package cn.stt.util;
  * Created by Administrator on 2016-09-06.
  */
 
+import com.artofsolving.jodconverter.DefaultDocumentFormatRegistry;
 import com.artofsolving.jodconverter.DocumentConverter;
+import com.artofsolving.jodconverter.DocumentFormat;
 import com.artofsolving.jodconverter.openoffice.connection.OpenOfficeConnection;
 import com.artofsolving.jodconverter.openoffice.connection.SocketOpenOfficeConnection;
 import com.artofsolving.jodconverter.openoffice.converter.OpenOfficeDocumentConverter;
@@ -61,7 +63,23 @@ public class DocConverter {
                 try {
                     connection.connect();
                     DocumentConverter converter = new OpenOfficeDocumentConverter(connection);
-                    converter.convert(docFile, pdfFile);
+                    DefaultDocumentFormatRegistry formatReg = new DefaultDocumentFormatRegistry();
+                    DocumentFormat inputDocumentFormat = null;
+                    String fileName = docFile.getName();
+                    String extName = fileName.substring(fileName.lastIndexOf(".")+1);
+                    if("doc".equalsIgnoreCase(extName) || "docx".equalsIgnoreCase(extName)){ //word文档
+                        inputDocumentFormat = formatReg.getFormatByFileExtension("doc");
+                    }else if("ppt".equalsIgnoreCase(extName) || "pptx".equalsIgnoreCase(extName)){//ppt
+                        inputDocumentFormat = formatReg.getFormatByFileExtension("ppt");
+                    }else if("xls".equalsIgnoreCase(extName) || "xlsx".equalsIgnoreCase(extName)){//xls
+                        inputDocumentFormat = formatReg.getFormatByFileExtension("xls");
+                    }else{
+                        throw new Exception("未知格式文件，不能转换！！！");
+                    }
+
+                    DocumentFormat pdf = formatReg.getFormatByFileExtension("pdf");
+                    converter.convert(docFile, inputDocumentFormat,pdfFile,pdf);
+//                    converter.convert(docFile, pdfFile);
                     // close the connection
                     connection.disconnect();
                     System.out.println("****pdf转换成功，PDF输出：" + pdfFile.getPath()+ "****");
@@ -95,7 +113,9 @@ public class DocConverter {
             if (pdfFile.exists()) {
                 if (environment == 1) {// windows环境处理
                     try {
-                        Process p = r.exec("D:\\softwareInstallDir\\SWFTools\\pdf2swf.exe "+ pdfFile.getPath() + " -o "+ swfFile.getPath() + " -T 9");
+                        String cmd = "D:\\softwareInstallDir\\SWFTools\\pdf2swf.exe "+ pdfFile.getPath() + " -o "+ swfFile.getPath() + " -T 9";
+                        System.out.println("cmd==="+cmd);
+                        Process p = r.exec(cmd);
                         System.out.print(loadStream(p.getInputStream()));
                         System.err.print(loadStream(p.getErrorStream()));
                         System.out.print(loadStream(p.getInputStream()));
