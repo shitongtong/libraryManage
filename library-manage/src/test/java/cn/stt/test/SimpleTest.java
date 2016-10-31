@@ -1,6 +1,5 @@
 package cn.stt.test;
 
-import cn.stt.po.Book;
 import cn.stt.util.ListSortUtil;
 import org.junit.Test;
 
