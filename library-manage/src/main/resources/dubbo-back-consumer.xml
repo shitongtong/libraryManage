@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="wema-wc-hospital"/>
+    <dubbo:registry address="${dubbo.registry.address}"/>
+
+    <dubbo:reference id="courseService" interface="cn.bblink.school.service.CourseService" check="false"/>
+    <dubbo:reference id="lecturerService" interface="cn.bblink.school.service.LecturerService" check="false"/>
+    <dubbo:reference id="schoolService" interface="cn.bblink.school.service.SchoolService" check="false"/>
+    <dubbo:reference id="examService" interface="cn.bblink.school.service.ExamService" check="false" />
+    <dubbo:reference id="qiNiuFileService" interface="cn.bblink.wema.platform.fs.api.QiNiuFileService" check="false"/>
+    <dubbo:reference id="distService" interface="cn.bblink.sys.service.DistService" check="false"/>
+    <dubbo:reference id="queService" interface="cn.bblink.que.service.QueService" check="false"/>
+    <dubbo:reference id="queAnswerService" interface="cn.bblink.que.service.QueAnswerService" check="false"/>
+    <dubbo:reference id="accountService" interface="cn.bblink.wema.platform.user.api.AccountService" check="false"/>
+    <dubbo:reference id="userService" interface="cn.bblink.school.service.UserService" check="false"/>
+    <dubbo:reference id="schoolAuthService" interface="cn.bblink.school.service.SchoolAuthService" check="false"/>
+    
+</beans>
