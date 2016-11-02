@@ -24,13 +24,13 @@ import org.yidu.novel.service.ArticleService;
 import org.yidu.novel.service.SystemBlockService;
 
 import javax.servlet.ServletContext;
-//import org.yidu.novel.service.ArticleService;
-//import org.yidu.novel.service.BookcaseService;
-//import org.yidu.novel.service.ChapterService;
-//import org.yidu.novel.service.MessageService;
-//import org.yidu.novel.service.SystemBlockService;
-//import org.yidu.novel.service.SystemConfigService;
-//import org.yidu.novel.service.UserService;
+import org.yidu.novel.service.ArticleService;
+import org.yidu.novel.service.BookcaseService;
+import org.yidu.novel.service.ChapterService;
+import org.yidu.novel.service.MessageService;
+import org.yidu.novel.service.SystemBlockService;
+import org.yidu.novel.service.SystemConfigService;
+import org.yidu.novel.service.UserService;
 
 @Results({    @Result(
         name = "freemarker_error",
@@ -91,13 +91,13 @@ public abstract class AbstractBaseAction extends ActionSupport implements Valida
     public static final String MOBILE_FREEMARKER_ERROR = "mobile_freemarker_error";
     public static final String MOBILE_FREEMARKER_MESSAGE = "mobile_freemarker_message";
     protected Log logger = LogFactory.getLog(this.getClass());
-//    protected UserService userService;
+    protected UserService userService;
     protected ArticleService articleService;
-//    protected ChapterService chapterService;
-//    protected BookcaseService bookcaseService;
+    protected ChapterService chapterService;
+    protected BookcaseService bookcaseService;
     protected SystemBlockService systemBlockService;
-//    protected SystemConfigService systemConfigService;
-//    protected MessageService messageService;
+    protected SystemConfigService systemConfigService;
+    protected MessageService messageService;
     protected Map<String, LinkedMap> collections = new HashMap();
 
     public AbstractBaseAction() {
@@ -108,36 +108,36 @@ public abstract class AbstractBaseAction extends ActionSupport implements Valida
     public void setSystemBlockService(SystemBlockService systemBlockService) {
         this.systemBlockService = systemBlockService;
     }
-//
-//    @Autowired
-//    public void setSystemConfigService(SystemConfigService systemConfigService) {
-//        this.systemConfigService = systemConfigService;
-//    }
-//
-//    @Autowired
-//    public void setUserService(UserService userService) {
-//        this.userService = userService;
-//    }
-//
+
+    @Autowired
+    public void setSystemConfigService(SystemConfigService systemConfigService) {
+        this.systemConfigService = systemConfigService;
+    }
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
     @Autowired
     public void setArticleService(ArticleService articleService) {
         this.articleService = articleService;
     }
-//
-//    @Autowired
-//    public void setChapterService(ChapterService chapterService) {
-//        this.chapterService = chapterService;
-//    }
-//
-//    @Autowired
-//    public void setBookcaseService(BookcaseService bookcaseService) {
-//        this.bookcaseService = bookcaseService;
-//    }
-//
-//    @Autowired
-//    public void setMessageService(MessageService messageService) {
-//        this.messageService = messageService;
-//    }
+
+    @Autowired
+    public void setChapterService(ChapterService chapterService) {
+        this.chapterService = chapterService;
+    }
+
+    @Autowired
+    public void setBookcaseService(BookcaseService bookcaseService) {
+        this.bookcaseService = bookcaseService;
+    }
+
+    @Autowired
+    public void setMessageService(MessageService messageService) {
+        this.messageService = messageService;
+    }
 
     public String getInputResultName() {
         logger.debug("entry method: getInputResultName()");

@@ -20,7 +20,7 @@ public class InitializerListener implements ServletContextListener {
     public InitializerListener() {
     }
 
-    @Override
+//    @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         try {
             PropertiesConfiguration e = new PropertiesConfiguration("yidu.properties");
@@ -35,7 +35,7 @@ public class InitializerListener implements ServletContextListener {
         }
     }
 
-    @Override
+//    @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
 
     }

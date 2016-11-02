@@ -23,13 +23,13 @@ import org.yidu.novel.cache.CacheManager;
 import org.yidu.novel.entity.TArticle;
 import org.yidu.novel.entity.TSystemBlock;
 import org.yidu.novel.utils.Pagination;
-//import org.yidu.novel.dto.ArticleDTO;
-//import org.yidu.novel.entity.TArticle;
-//import org.yidu.novel.entity.TSystemBlock;
-//import org.yidu.novel.entity.TUser;
-//import org.yidu.novel.utils.CookieUtils;
-//import org.yidu.novel.utils.LoginManager;
-//import org.yidu.novel.utils.Pagination;
+import org.yidu.novel.dto.ArticleDTO;
+import org.yidu.novel.entity.TArticle;
+import org.yidu.novel.entity.TSystemBlock;
+import org.yidu.novel.entity.TUser;
+import org.yidu.novel.utils.CookieUtils;
+import org.yidu.novel.utils.LoginManager;
+import org.yidu.novel.utils.Pagination;
 
 public abstract class AbstractPublicBaseAction extends AbstractPublicAndUserBaseAction {
     private static final long serialVersionUID = 4900892616460135567L;
@@ -61,9 +61,9 @@ public abstract class AbstractPublicBaseAction extends AbstractPublicAndUserBase
     public String execute() {
         this.logger.debug("execute start.");
         this.loadBlock();
-//        if(!LoginManager.isLoginFlag()) {
-//            CookieUtils.getUserCookieAndLogoin(ServletActionContext.getRequest(), this.userService);
-//        }
+        if(!LoginManager.isLoginFlag()) {
+            CookieUtils.getUserCookieAndLogoin(ServletActionContext.getRequest(), this.userService);
+        }
 
         this.loadData();
         if(this.hasErrors()) {
@@ -126,30 +126,30 @@ public abstract class AbstractPublicBaseAction extends AbstractPublicAndUserBase
         this.logger.debug("loadBlock normally end.");
     }
 
-//    protected ArticleDTO getArticleInfoByNo(int articleno) {
-//        ArticleDTO article = (ArticleDTO)CacheManager.getObject("CacheKey_ARTICLE" + articleno);
-//        if(article == null || article.getArticleno() == 0) {
-//            article = new ArticleDTO();
-//            TArticle tarticle = this.articleService.getByNo(articleno);
-//            if(tarticle == null || tarticle.getArticleno() == 0) {
-//                this.addActionError(this.getText("errors.not.exsits.article"));
-//                return null;
-//            }
-//
-//            BeanUtils.copyProperties(tarticle, article);
-//            CacheManager.putObject("CacheKey_ARTICLE" + articleno, article);
-//        }
-//
-//        return article;
-//    }
+    protected ArticleDTO getArticleInfoByNo(int articleno) {
+        ArticleDTO article = (ArticleDTO)CacheManager.getObject("CacheKey_ARTICLE" + articleno);
+        if(article == null || article.getArticleno() == 0) {
+            article = new ArticleDTO();
+            TArticle tarticle = this.articleService.getByNo(articleno);
+            if(tarticle == null || tarticle.getArticleno() == 0) {
+                this.addActionError(this.getText("errors.not.exsits.article"));
+                return null;
+            }
+
+            BeanUtils.copyProperties(tarticle, article);
+            CacheManager.putObject("CacheKey_ARTICLE" + articleno, article);
+        }
+
+        return article;
+    }
 
     public abstract int getPageType();
 
-//    public boolean getLoginFlag() {
-//        return LoginManager.isLoginFlag();
-//    }
-//
-//    public TUser getLoginUser() {
-//        return LoginManager.getLoginUser();
-//    }
+    public boolean getLoginFlag() {
+        return LoginManager.isLoginFlag();
+    }
+
+    public TUser getLoginUser() {
+        return LoginManager.getLoginUser();
+    }
 }

@@ -8,13 +8,13 @@
 		<property name="yiduDataSource" ref="yiduDataSource" />
 		<property name="sessionFactory" ref="sessionFactory-setting" />
 	</bean>
-	<!--<bean id="userService" parent="yiduServiceParent" class="org.yidu.novel.service.impl.UserServiceImpl" />-->
+	<bean id="userService" parent="yiduServiceParent" class="org.yidu.novel.service.impl.UserServiceImpl" />
 	<bean id="articleService" parent="yiduServiceParent" class="org.yidu.novel.service.impl.ArticleServiceImpl" />
-	<!--<bean id="chapterService" parent="yiduServiceParent" class="org.yidu.novel.service.impl.ChapterServiceImpl" />-->
+	<bean id="chapterService" parent="yiduServiceParent" class="org.yidu.novel.service.impl.ChapterServiceImpl" />
 	<bean id="systemBlockService" parent="yiduServiceParent" class="org.yidu.novel.service.impl.SystemBlockServiceImpl" />
-	<!--<bean id="systemConfigService" parent="yiduServiceParent" class="org.yidu.novel.service.impl.SystemConfigServiceImpl" />-->
-	<!--<bean id="bookcaseService" parent="yiduServiceParent" class="org.yidu.novel.service.impl.BookcaseServiceImpl" />-->
-	<!--<bean id="messageService" parent="yiduServiceParent" class="org.yidu.novel.service.impl.MessageServiceImpl" />-->
+	<bean id="systemConfigService" parent="yiduServiceParent" class="org.yidu.novel.service.impl.SystemConfigServiceImpl" />
+	<bean id="bookcaseService" parent="yiduServiceParent" class="org.yidu.novel.service.impl.BookcaseServiceImpl" />
+	<bean id="messageService" parent="yiduServiceParent" class="org.yidu.novel.service.impl.MessageServiceImpl" />
     <bean id="cleanDeleteDataService" parent="yiduServiceParent" class="org.yidu.novel.service.impl.CleanDeleteDataServiceImpl" />
 
 </beans>

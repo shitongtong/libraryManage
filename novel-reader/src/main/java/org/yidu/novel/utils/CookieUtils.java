@@ -15,6 +15,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 //import org.yidu.novel.entity.TUser;
 //import org.yidu.novel.service.UserService;
+import org.yidu.novel.entity.TUser;
+import org.yidu.novel.service.UserService;
 import org.yidu.novel.utils.LoginManager;
 
 public class CookieUtils {
@@ -25,44 +27,44 @@ public class CookieUtils {
     public CookieUtils() {
     }
 
-//    public static Cookie addUserCookie(TUser user) {
-//        try {
-//            Cookie e = new Cookie("user.cookie", URLEncoder.encode(user.getLoginid(), "UTF-8") + "," + user.getPassword());
-//            e.setMaxAge(1209600);
-//            return e;
-//        } catch (UnsupportedEncodingException var2) {
-//            logger.error(var2);
-//            return null;
-//        }
-//    }
-//
-//    public static void getUserCookieAndLogoin(HttpServletRequest request, UserService userService) {
-//        Cookie[] cookies = request.getCookies();
-//        if(cookies != null) {
-//            Cookie[] var6 = cookies;
-//            int var5 = cookies.length;
-//
-//            for(int var4 = 0; var4 < var5; ++var4) {
-//                Cookie cookie = var6[var4];
-//                if("user.cookie".equals(cookie.getName())) {
-//                    String value = cookie.getValue();
-//                    if(StringUtils.isNotBlank(value)) {
-//                        String[] split = value.split(",");
-//                        if(split.length == 2) {
-//                            String loginid = split[0];
-//                            String password = split[1];
-//                            TUser user = userService.findByLoginInfoByJDBC(loginid, password);
-//                            if(user != null) {
-//                                LoginManager.doLogin(user);
-//                                userService.updateLastLoginDate(user.getUserno(), new Date());
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//    }
+    public static Cookie addUserCookie(TUser user) {
+        try {
+            Cookie e = new Cookie("user.cookie", URLEncoder.encode(user.getLoginid(), "UTF-8") + "," + user.getPassword());
+            e.setMaxAge(1209600);
+            return e;
+        } catch (UnsupportedEncodingException var2) {
+            logger.error(var2);
+            return null;
+        }
+    }
+
+    public static void getUserCookieAndLogoin(HttpServletRequest request, UserService userService) {
+        Cookie[] cookies = request.getCookies();
+        if(cookies != null) {
+            Cookie[] var6 = cookies;
+            int var5 = cookies.length;
+
+            for(int var4 = 0; var4 < var5; ++var4) {
+                Cookie cookie = var6[var4];
+                if("user.cookie".equals(cookie.getName())) {
+                    String value = cookie.getValue();
+                    if(StringUtils.isNotBlank(value)) {
+                        String[] split = value.split(",");
+                        if(split.length == 2) {
+                            String loginid = split[0];
+                            String password = split[1];
+                            TUser user = userService.findByLoginInfoByJDBC(loginid, password);
+                            if(user != null) {
+                                LoginManager.doLogin(user);
+                                userService.updateLastLoginDate(user.getUserno(), new Date());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 
     public static Cookie delUserCookie(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();

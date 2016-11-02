@@ -1,0 +1,324 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
+package org.yidu.novel.action.user;
+
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
+import java.io.File;
+import java.util.Date;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.BeanUtils;
+import org.yidu.novel.action.base.AbstractUserBaseAction;
+import org.yidu.novel.bean.ArticleSearchBean;
+import org.yidu.novel.constant.YiDuConstants;
+import org.yidu.novel.entity.TArticle;
+import org.yidu.novel.entity.TUser;
+import org.yidu.novel.utils.LoginManager;
+import org.yidu.novel.utils.Utils;
+
+@Action("articleEdit")
+@Result(
+        name = "redirect",
+        type = "redirect",
+        location = "/user/articleList"
+)
+public class ArticleEditAction extends AbstractUserBaseAction {
+    private static final long serialVersionUID = 822196809678036074L;
+    private int articleno;
+    private String articlename;
+    private String keywords;
+    private Integer category;
+    private String intro;
+    private Boolean fullflag;
+    private Integer permission;
+    private Boolean firstflag;
+    private Integer dayvisit;
+    private Integer weekvisit;
+    private Integer monthvisit;
+    private Integer allvisit;
+    private Integer dayvote;
+    private Integer weekvote;
+    private Integer monthvote;
+    private Integer allvote;
+    private File articlespic;
+    private String articlespicContentType;
+    private String articlespicFileName;
+
+    public ArticleEditAction() {
+    }
+
+    public int getArticleno() {
+        return this.articleno;
+    }
+
+    public void setArticleno(int articleno) {
+        this.articleno = articleno;
+    }
+
+    public String getArticlename() {
+        return this.articlename;
+    }
+
+    @RequiredStringValidator(
+            message = "${getText(\"errors.required.input\", {getText(\"label.user.article.articlename\")})}"
+    )
+    @StringLengthFieldValidator(
+            maxLength = "50",
+            message = "${getText(\"errors.maxlength\", { {maxLength},getText(\"label.user.article.articlename\")})}"
+    )
+    public void setArticlename(String articlename) {
+        this.articlename = articlename;
+    }
+
+    public String getKeywords() {
+        return this.keywords;
+    }
+
+    @StringLengthFieldValidator(
+            maxLength = "100",
+            message = "${getText(\"errors.maxlength\", { {maxLength},getText(\"label.user.article.keywords\")})}"
+    )
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
+
+    public Integer getCategory() {
+        return this.category;
+    }
+
+    public void setCategory(Integer category) {
+        this.category = category;
+    }
+
+    public String getIntro() {
+        return this.intro;
+    }
+
+    @StringLengthFieldValidator(
+            maxLength = "500",
+            message = "${getText(\"errors.maxlength\", { {maxLength},getText(\"label.user.article.intro\")})}"
+    )
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+    public Boolean getFullflag() {
+        return this.fullflag;
+    }
+
+    public void setFullflag(Boolean fullflag) {
+        this.fullflag = fullflag;
+    }
+
+    public Integer getPermission() {
+        return this.permission;
+    }
+
+    public void setPermission(Integer permission) {
+        this.permission = permission;
+    }
+
+    public Boolean getFirstflag() {
+        return this.firstflag;
+    }
+
+    public void setFirstflag(Boolean firstflag) {
+        this.firstflag = firstflag;
+    }
+
+    public Integer getDayvisit() {
+        return this.dayvisit;
+    }
+
+    public void setDayvisit(Integer dayvisit) {
+        this.dayvisit = dayvisit;
+    }
+
+    public Integer getWeekvisit() {
+        return this.weekvisit;
+    }
+
+    public void setWeekvisit(Integer weekvisit) {
+        this.weekvisit = weekvisit;
+    }
+
+    public Integer getMonthvisit() {
+        return this.monthvisit;
+    }
+
+    public void setMonthvisit(Integer monthvisit) {
+        this.monthvisit = monthvisit;
+    }
+
+    public Integer getAllvisit() {
+        return this.allvisit;
+    }
+
+    public void setAllvisit(Integer allvisit) {
+        this.allvisit = allvisit;
+    }
+
+    public Integer getDayvote() {
+        return this.dayvote;
+    }
+
+    public void setDayvote(Integer dayvote) {
+        this.dayvote = dayvote;
+    }
+
+    public Integer getWeekvote() {
+        return this.weekvote;
+    }
+
+    public void setWeekvote(Integer weekvote) {
+        this.weekvote = weekvote;
+    }
+
+    public Integer getMonthvote() {
+        return this.monthvote;
+    }
+
+    public void setMonthvote(Integer monthvote) {
+        this.monthvote = monthvote;
+    }
+
+    public Integer getAllvote() {
+        return this.allvote;
+    }
+
+    public void setAllvote(Integer allvote) {
+        this.allvote = allvote;
+    }
+
+    public File getArticlespic() {
+        return this.articlespic;
+    }
+
+    public void setArticlespic(File articlespic) {
+        this.articlespic = articlespic;
+    }
+
+    public String getArticlespicContentType() {
+        return this.articlespicContentType;
+    }
+
+    public void setArticlespicContentType(String articlespicContentType) {
+        this.articlespicContentType = articlespicContentType;
+    }
+
+    public String getArticlespicFileName() {
+        return this.articlespicFileName;
+    }
+
+    public void setArticlespicFileName(String articlespicFileName) {
+        this.articlespicFileName = articlespicFileName;
+    }
+
+    protected void loadData() {
+        this.logger.debug("loadData start.");
+        this.initCollections(new String[]{"collectionProperties.article.category", "collectionProperties.article.fullflag", "collectionProperties.article.firstflag", "collectionProperties.article.permission"});
+        if(this.articleno != 0) {
+            TArticle article = this.articleService.getByNo(this.articleno);
+            if(article == null) {
+                this.addActionError(this.getText("errors.not.exsits.article"));
+                return;
+            }
+
+            if(!this.checkRight(article)) {
+                this.addActionError(this.getText("errors.right"));
+                return;
+            }
+
+            BeanUtils.copyProperties(article, this);
+        }
+
+        this.logger.debug("loadData normally end.");
+    }
+
+    public String save() {
+        this.logger.debug("save start.");
+        this.initCollections(new String[]{"collectionProperties.article.category", "collectionProperties.article.fullflag", "collectionProperties.article.firstflag", "collectionProperties.article.permission"});
+        TArticle article = new TArticle();
+        if(this.articleno == 0) {
+            ArticleSearchBean e = new ArticleSearchBean();
+            e.setArticlename(this.articlename);
+            e.setPageType(2);
+            int count = this.articleService.getCount(e).intValue();
+            if(count > 0) {
+                this.addActionError(this.getText("errors.duplicated", new String[]{this.getText("label.user.article.articlename")}));
+                return "freemarker";
+            }
+
+            TUser user = LoginManager.getLoginUser();
+            article.setAuthorid(Integer.valueOf(user.getUserno()));
+            article.setAuthor(user.getUsername());
+            article.setDayvisit(Integer.valueOf(0));
+            article.setDayvote(Integer.valueOf(0));
+            article.setWeekvisit(Integer.valueOf(0));
+            article.setWeekvote(Integer.valueOf(0));
+            article.setMonthvisit(Integer.valueOf(0));
+            article.setMonthvote(Integer.valueOf(0));
+            article.setAllvisit(Integer.valueOf(0));
+            article.setAllvote(Integer.valueOf(0));
+            article.setSize(Integer.valueOf(0));
+            article.setChapters(Integer.valueOf(0));
+            article.setPostdate(new Date());
+            article.setDeleteflag(Boolean.valueOf(false));
+            article.setPublicflag(Integer.valueOf(0));
+        } else {
+            article = this.articleService.getByNo(this.articleno);
+            if(article == null) {
+                this.addActionError(this.getText("errors.not.exsits.article"));
+                return "freemarker_error";
+            }
+
+            if(!this.checkRight(article)) {
+                this.addActionError(this.getText("errors.right"));
+                return "freemarker_error";
+            }
+        }
+
+        BeanUtils.copyProperties(this, article, new String[]{"articleno", "dayvisit", "weekvisit", "monthvisit", "allvisit", "dayvote", "weekvote", "monthvote", "allvote"});
+        article.setModifytime(new Date());
+        article.setModifyuserno(Integer.valueOf(LoginManager.getLoginUser().getUserno()));
+        this.articleService.save(article);
+        if(this.articlespic != null) {
+            if(!ArrayUtils.contains(YiDuConstants.allowPicTypes, this.getArticlespicContentType())) {
+                this.addActionError(this.getText("errors.file.type"));
+                return "freemarker";
+            }
+
+            try {
+                Utils.saveArticlespic(article.getArticleno(), this.articlespic, this.articlespicFileName);
+            } catch (Exception var5) {
+                this.addActionError(this.getText("errors.file.save"));
+                return "freemarker";
+            }
+
+            if(StringUtils.equals(this.getArticlespicContentType(), "image/jpeg")) {
+                article.setImgflag(Integer.valueOf(1));
+            } else if(StringUtils.equals(this.getArticlespicContentType(), "image/gif")) {
+                article.setImgflag(Integer.valueOf(2));
+            } else if(StringUtils.equals(this.getArticlespicContentType(), "image/png")) {
+                article.setImgflag(Integer.valueOf(3));
+            }
+        }
+
+        this.logger.debug("save normally end.");
+        return "redirect";
+    }
+
+    public int getPageType() {
+        return 31;
+    }
+
+    public String getTempName() {
+        return "user/articleEdit";
+    }
+}
