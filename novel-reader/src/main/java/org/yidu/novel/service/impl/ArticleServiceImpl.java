@@ -112,7 +112,8 @@ public class ArticleServiceImpl extends HibernateSupportServiceImpl implements A
     }
 
     public void cleanStatistics() {
-        System.out.println("cleanStatistics start");
+        logger.debug("cleanStatistics start");
+//        System.out.println("cleanStatistics start");
         String sql = "update t_article set dayvote = 0 ,dayvisit = 0";
         Calendar cal = Calendar.getInstance();
         int dayOfWeek = cal.get(7);
@@ -125,8 +126,10 @@ public class ArticleServiceImpl extends HibernateSupportServiceImpl implements A
             sql = sql + ",monthvote = 0,monthvisit=0";
         }
 
-        System.out.println(sql);
+//        System.out.println(sql);
+        logger.debug("sql::"+sql);
         this.yiduJdbcTemplate.update(sql);
-        System.out.println("cleanStatistics end");
+//        System.out.println("cleanStatistics end");
+        logger.debug("cleanStatistics end");
     }
 }

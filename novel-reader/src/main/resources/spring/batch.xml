@@ -20,7 +20,7 @@
 
 	<bean id="cleanStatisticsDataTimerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="jobDetail" ref="cleanStatisticsDataJob" />
-		<property name="cronExpression" value="0 1 0 * * ?" />
+		<property name="cronExpression" value="0 1 0 * * ?" /><!--零点1分0秒-->
 	</bean>
 	
 	
@@ -38,7 +38,7 @@
 
     <bean id="cleanDeleteDataTimerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="cleanDeleteDataJob" />
-        <property name="cronExpression" value="15 1 0 * * ?" />
+        <property name="cronExpression" value="15 1 0 * * ?" /><!--零点1分15秒-->
     </bean>
 
 	<bean id="createIndexJob" class="org.springframework.scheduling.quartz.JobDetailBean">
@@ -48,7 +48,7 @@
 
 	<bean id="createIndexTimerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="jobDetail" ref="createIndexJob" />
-		<property name="cronExpression" value="0 */10 * * * ?" />
+		<property name="cronExpression" value="0 */10 * * * ?" /><!--每十分钟-->
 	</bean>
 	
 	
@@ -58,7 +58,7 @@
     
     <bean id="createSiteMapTimerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="createSiteMapJob" />
-        <property name="cronExpression" value="0 */5 * * * ?" />
+        <property name="cronExpression" value="0 */5 * * * ?" /><!--每五分钟-->
     </bean>
 
 

@@ -10,5 +10,5 @@
 	<import resource="dataSource.xml" />
 	<import resource="service.xml" />
 	<import resource="tx.xml" />
-	<!--<import resource="batch.xml" />-->
+	<import resource="batch.xml" />
 </beans>

@@ -27,7 +27,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.apache.struts2.ServletActionContext;
 import org.yidu.novel.constant.YiDuConstants;
-//import org.yidu.novel.entity.TChapter;
+import org.yidu.novel.entity.TChapter;
 
 public class Utils {
     protected static Log logger = LogFactory.getLog(Utils.class);
@@ -60,42 +60,42 @@ public class Utils {
         }
     }
 
-//    public static String getContext(TChapter chapter, boolean escape) {
-//        StringBuilder sb = new StringBuilder();
-//        String path = getTextFilePathByChapterno(chapter.getArticleno().intValue(), chapter.getChapterno());
-//        File file = new File(path);
-//
-//        try {
-//            if(file.isFile() && file.exists()) {
-//                InputStreamReader e = new InputStreamReader(new FileInputStream(file), YiDuConstants.yiduConf.getString("txtEncoding"));
-//                BufferedReader bufferedReader = new BufferedReader(e);
-//                String lineTxt = null;
-//
-//                while((lineTxt = bufferedReader.readLine()) != null) {
-//                    sb.append(lineTxt);
-//                    if(escape) {
-//                        sb.append("<br/>");
-//                    } else {
-//                        sb.append("\n");
-//                    }
-//                }
-//
-//                bufferedReader.close();
-//                e.close();
-//                if(escape) {
-//                    return sb.toString().replaceAll("\\s", "&nbsp;");
-//                }
-//
-//                return sb.toString();
-//            }
-//
-//            logger.info("can not find chapter. articleno:" + chapter.getArticleno() + " chapterno:" + chapter.getChapterno());
-//        } catch (Exception var8) {
-//            logger.error(var8.getMessage(), var8);
-//        }
-//
-//        return null;
-//    }
+    public static String getContext(TChapter chapter, boolean escape) {
+        StringBuilder sb = new StringBuilder();
+        String path = getTextFilePathByChapterno(chapter.getArticleno().intValue(), chapter.getChapterno());
+        File file = new File(path);
+
+        try {
+            if(file.isFile() && file.exists()) {
+                InputStreamReader e = new InputStreamReader(new FileInputStream(file), YiDuConstants.yiduConf.getString("txtEncoding"));
+                BufferedReader bufferedReader = new BufferedReader(e);
+                String lineTxt = null;
+
+                while((lineTxt = bufferedReader.readLine()) != null) {
+                    sb.append(lineTxt);
+                    if(escape) {
+                        sb.append("<br/>");
+                    } else {
+                        sb.append("\n");
+                    }
+                }
+
+                bufferedReader.close();
+                e.close();
+                if(escape) {
+                    return sb.toString().replaceAll("\\s", "&nbsp;");
+                }
+
+                return sb.toString();
+            }
+
+            logger.info("can not find chapter. articleno:" + chapter.getArticleno() + " chapterno:" + chapter.getChapterno());
+        } catch (Exception var8) {
+            logger.error(var8.getMessage(), var8);
+        }
+
+        return null;
+    }
 
     public static String getTextFilePathByChapterno(int articleno, int chapterno) {
         String path = YiDuConstants.yiduConf.getString("filePath");
