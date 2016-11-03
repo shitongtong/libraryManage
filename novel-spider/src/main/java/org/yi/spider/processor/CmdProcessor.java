@@ -57,7 +57,9 @@ public class CmdProcessor extends BaseProcessor {
         int interval = GlobalConfig.collect.getInt("interval", 0);
 
         while(true) {
+            logger.debug("进入第一层循环...");
             while(true) {
+                logger.debug("进入第二层循环...");
                 try {
                     sp.process();
                     interval = Math.max(interval, 0);

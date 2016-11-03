@@ -298,7 +298,7 @@ public class NovelParser extends BaseProcessor {
             novel.setChapters(ObjectUtils.obj2Int(chapterSource.get("count")));
             novel.setLastChapterName(chapter.getChapterName());
             novel.setLastChapterno(chapterNo);
-            novel.setSize(ObjectUtils.obj2Int(chapterSource.get("size")));
+                novel.setSize(ObjectUtils.obj2Int(chapterSource.get("size")));
             this.novelService.update(novel);
         }
 

@@ -37,8 +37,12 @@ public class MainThread {
             cmd = CliHelper.parse(this.args);
             if(cmd.hasOption(ParamEnum.HELP.getName())) {
                 CmdHelper.showHelp();
+                logger.debug("程序退出...");
+                System.exit(0);
             } else if(cmd.hasOption(ParamEnum.VERSION.getName())) {
                 CmdHelper.showVersion();
+                logger.debug("程序退出...");
+                System.exit(0);
             } else if(cmd.hasOption(ParamEnum.MULTI.getName())) {
                 List e = FileHelper.readRunArgs("run.ini");
                 ExecutorService pool = Executors.newFixedThreadPool(e.size());
@@ -55,6 +59,9 @@ public class MainThread {
             }
         } catch (ParseException var7) {
             logger.error("解析命令行参数出错， 请输入help查看用法。", var7);
+            logger.debug("程序异常退出...");
+            System.exit(0);
+
         }
 
     }
