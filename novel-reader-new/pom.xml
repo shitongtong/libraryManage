@@ -101,11 +101,11 @@
             <artifactId>concurrent</artifactId>
             <version>1.0</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.qq</groupId>
             <artifactId>connect</artifactId>
             <version>2.0.0</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
@@ -156,7 +156,7 @@
             <artifactId>IKAnalyzer</artifactId>
             <version>3.2.8</version>
         </dependency>-->
-        <dependency>
+        <!--<dependency>
             <groupId>com.janeluo</groupId>
             <artifactId>ikanalyzer</artifactId>
             <version>2012_u6</version>
@@ -165,7 +165,7 @@
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
             <version>3.11.0-GA</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
@@ -201,11 +201,11 @@
             <artifactId>pinyin4j</artifactId>
             <version>2.5.0</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.1-901.jdbc4</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
@@ -216,7 +216,7 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.6.0</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
             <version>3.2.11.RELEASE</version>
@@ -260,7 +260,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>3.2.11.RELEASE</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>

@@ -1,0 +1,127 @@
+package org.yidu.novel.action;
+
+import com.qq.connect.QQConnectException;
+import com.qq.connect.api.OpenID;
+import com.qq.connect.javabeans.AccessToken;
+import com.qq.connect.oauth.Oauth;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.Action;
+import org.yidu.novel.action.base.AbstractPublicBaseAction;
+import org.yidu.novel.constant.YiDuConstants;
+import org.yidu.novel.entity.TUser;
+import org.yidu.novel.utils.CookieUtils;
+import org.yidu.novel.utils.LoginManager;
+import org.yidu.novel.utils.Utils;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+
+/**
+ * 
+ * <p>
+ * QQ登录功能
+ * </p>
+ * Copyright(c) 2014 YiDu-Novel. All rights reserved.
+ * 
+ * @version 1.1.9
+ * @author shinpa.you
+ */
+@Action(value = "QQLogin")
+public class QQLoginAction extends AbstractPublicBaseAction {
+    /**
+     * 串行化版本统一标识符
+     */
+    private static final long serialVersionUID = -4123651229405239412L;
+
+    /**
+     * 功能名称。
+     */
+    public static final String NAME = "QQLogin";
+
+    /**
+     * 访问URL。
+     */
+    public static final String URL = NAMESPACE + "/" + NAME;
+
+    @Override
+    public int getPageType() {
+        return YiDuConstants.Pagetype.PAGE_OTHERS;
+    }
+
+    @Override
+    public String execute() {
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        try {
+            AccessToken accessTokenObj = new Oauth().getAccessTokenByRequest(request);
+            String accessToken = null;
+            String openID = null;
+            if (StringUtils.isEmpty(accessTokenObj.getAccessToken())) {
+                logger.warn("没有获取到响应参数");
+            } else {
+                accessToken = accessTokenObj.getAccessToken();
+                OpenID openIDObj = new OpenID(accessToken);
+                openID = openIDObj.getUserOpenID();
+                com.qq.connect.api.qzone.UserInfo qzoneUserInfo = new com.qq.connect.api.qzone.UserInfo(accessToken,
+                        openID);
+                com.qq.connect.javabeans.qzone.UserInfoBean userInfoBean = qzoneUserInfo.getUserInfo();
+                if (userInfoBean.getRet() == 0) {
+                    TUser user = null;
+                    if (LoginManager.isLoginFlag()) {
+                        // 登录状态绑定
+                        user = LoginManager.getLoginUser();
+                        user.setOpenid(openID);
+                        user.setModifytime(new Date());
+                        userService.save(user);
+                    } else {
+                        // 未登录状态添加用户
+                        // 根据openid查询用户信息
+                        user = userService.findByOpenid(openID);
+
+                        if (user == null) {
+                            // 用户不存在的话，新建用户
+                            user = new TUser();
+                            user.setLoginid(userInfoBean.getNickname());
+                            // 设置默认随机密码
+                            user.setPassword(Utils.convert2MD5(userInfoBean.getNickname() + Utils.getRandomString(32)));
+                            user.setSex(StringUtils.equals(userInfoBean.getGender(), "男") ? (short) 1 : (short) 2);
+                            user.setType(YiDuConstants.UserType.NORMAL_USER);
+                            user.setRegdate(new Date());
+                            user.setDeleteflag(false);
+                            user.setActivedflag(true);
+                            user.setOpenid(openID);
+                            user.setModifytime(new Date());
+                        }
+                        user.setLastlogin(new Date());
+                        userService.save(user);
+                    }
+                    LoginManager.doLogin(user);
+                    // 保存用的登录信息
+                    Cookie cookie = CookieUtils.addUserCookie(user);
+                    // 添加cookie到response中
+                    ServletActionContext.getResponse().addCookie(cookie);
+                } else {
+                    logger.warn("很抱歉，我们没能正确获取到您的信息，原因是： " + userInfoBean.getMsg());
+                }
+            }
+
+        } catch (QQConnectException e) {
+            logger.warn("连接失败：" + e.getMessage());
+        }
+
+        return REDIRECT;
+    }
+
+    @Override
+    protected void loadData() {
+    }
+
+    @Override
+    public String getTempName() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+}
