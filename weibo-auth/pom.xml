@@ -10,7 +10,7 @@
     <packaging>war</packaging>
     <description>微博授权</description>
 
-    <!--<dependencies>
+    <dependencies>
         <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
@@ -33,7 +33,7 @@
         </dependency>
 
 
-    </dependencies>-->
+    </dependencies>
 
 
 </project>

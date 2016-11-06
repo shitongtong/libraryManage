@@ -126,7 +126,7 @@
         </dependency>
     </dependencies>
 
-    <build>
+    <!--<build>
         <finalName>${project.artifactId}</finalName>
         <resources>
             <resource>
@@ -270,5 +270,5 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 </project>
