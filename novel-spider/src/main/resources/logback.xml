@@ -10,16 +10,33 @@
         </encoder>
     </appender>
 
-    <!-- 时间滚动输出 level为 DEBUG 日志 -->
+    <!-- 时间滚动输出 level为 INFO 日志 -->
     <appender name="file-info"
-        class="ch.qos.logback.core.rolling.RollingFileAppender">
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>INFO</level>
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>logs/spider.%d{yyyy-MM-dd-HHmmss}.log</FileNamePattern>
+            <FileNamePattern>logs/spider_info.%d{yyyy-MM-dd-HHmmss}.log</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 时间滚动输出 level为 DEBUG 日志 -->
+    <appender name="file-debug"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>logs/spider_debug.%d{yyyy-MM-dd-HHmmss}.log</FileNamePattern>
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <encoder>
@@ -36,7 +53,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>logs/error.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>logs/spider_error.%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <encoder>
@@ -60,6 +77,7 @@
     <root level="INFO">
         <appender-ref ref="stdout" />
         <appender-ref ref="file-info" />
+        <appender-ref ref="file-debug" />
         <appender-ref ref="file-error" />
     </root>
 

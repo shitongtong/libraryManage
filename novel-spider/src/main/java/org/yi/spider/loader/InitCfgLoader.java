@@ -53,8 +53,14 @@ public class InitCfgLoader {
         try {
             File file = FileUtils.locateAbsolutePathFromClasspath("logback.xml");
             String absolutePath = file.getAbsolutePath();
+            String filePath = file.getPath();
+            String name = file.getName();
             logger.info("absolutePath:"+absolutePath);
-            LogUtils.load(absolutePath);
+            logger.info("filePath:"+filePath);
+            logger.info("name:"+name);
+//            LogUtils.load(absolutePath);
+//            LogUtils.load(filePath);
+            LogUtils.load(name);
         } catch (IOException var1) {
             logger.error(var1.getMessage(),var1);
             throw new IOException("查找logback.xml失败！");

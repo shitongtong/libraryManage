@@ -127,18 +127,18 @@
         </dependency>
     </dependencies>
 
-    <build>
+    <!--<build>
         <finalName>${project.artifactId}</finalName>
         <sourceDirectory>src/main/java</sourceDirectory>
         <resources>
-            <!-- 控制资源文件的拷贝 -->
+            &lt;!&ndash; 控制资源文件的拷贝 &ndash;&gt;
             <resource>
                 <directory>src/main/resources</directory>
                 <targetPath>${project.build.directory}</targetPath>
             </resource>
         </resources>
         <plugins>
-            <!-- 设置源文件编码方式 -->
+            &lt;!&ndash; 设置源文件编码方式 &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -148,7 +148,7 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-            <!-- 打包jar文件时，配置manifest文件，加入lib包的jar依赖 -->
+            &lt;!&ndash; 打包jar文件时，配置manifest文件，加入lib包的jar依赖 &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -162,7 +162,7 @@
                     </archive>
                 </configuration>
             </plugin>
-            <!-- 拷贝依赖的jar包到lib目录 -->
+            &lt;!&ndash; 拷贝依赖的jar包到lib目录 &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -181,7 +181,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- 解决资源文件的编码问题 -->
+            &lt;!&ndash; 解决资源文件的编码问题 &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -190,7 +190,7 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-            <!-- 打包source文件为jar文件 -->
+            &lt;!&ndash; 打包source文件为jar文件 &ndash;&gt;
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>2.1</version>
@@ -207,10 +207,10 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 
 
-    <!--<build>
+    <build>
         <finalName>${project.artifactId}</finalName>
         <resources>
             <resource>
@@ -325,5 +325,5 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>-->
+    </build>
 </project>
