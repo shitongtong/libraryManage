@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <display-name></display-name>
+    <servlet>
+        <description>This is the description of my J2EE component</description>
+        <display-name>This is the display name of my J2EE component</display-name>
+        <servlet-name>iiplayerServer</servlet-name>
+        <servlet-class>cn.stt.servlet.iiplayerServer</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>iiplayerServer</servlet-name>
+        <url-pattern>/iiplayerServer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>iiplayerLog</servlet-name>
+        <servlet-class>cn.stt.servlet.iiplayerLog</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>iiplayerLog</servlet-name>
+        <url-pattern>/iiplayerLog</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>iiplayerVIP</servlet-name>
+        <servlet-class>cn.stt.servlet.iiplayerVIP</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>iiplayerVIP</servlet-name>
+        <url-pattern>/iiplayerVIP</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>iiplayerSeach</servlet-name>
+        <servlet-class>cn.stt.servlet.iiplayerSeach</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>iiplayerSeach</servlet-name>
+        <url-pattern>/iiplayerSeach</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>iiplayerRegist</servlet-name>
+        <servlet-class>cn.stt.servlet.iiplayerRegist</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>iiplayerRegist</servlet-name>
+        <url-pattern>/iiplayerRegist</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>iiplayerPay</servlet-name>
+        <servlet-class>cn.stt.servlet.iiplayerPay</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>iiplayerPay</servlet-name>
+        <url-pattern>/iiplayerPay</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>Search115</servlet-name>
+        <servlet-class>cn.stt.servlet.Search115</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Search115</servlet-name>
+        <url-pattern>/Search115</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JX115</servlet-name>
+        <servlet-class>cn.stt.servlet.JX115</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>JX115</servlet-name>
+        <url-pattern>/JX115</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JXURL</servlet-name>
+        <servlet-class>cn.stt.servlet.JXURL</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>JXURL</servlet-name>
+        <url-pattern>/JXURL</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>lixian</servlet-name>
+        <servlet-class>cn.stt.servlet.lixian</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>lixian</servlet-name>
+        <url-pattern>/lixian</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>fengxiang</servlet-name>
+        <servlet-class>cn.stt.servlet.fengxiang</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>fengxiang</servlet-name>
+        <url-pattern>/fengxiang</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

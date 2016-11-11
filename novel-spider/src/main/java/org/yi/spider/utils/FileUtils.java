@@ -36,7 +36,10 @@ public class FileUtils {
     }
 
     public static File fileFromURL(URL url) {
-        if(url != null && url.getProtocol().equals("file")) {
+        logger.info("url.getProtocol():"+url.getProtocol());
+        logger.info("url.getFile():"+url.getFile());
+//        if(url != null && url.getProtocol().equals("file")) {
+        if(url != null) {
             String filename = url.getFile().replace('/', File.separatorChar);
             int pos = 0;
 

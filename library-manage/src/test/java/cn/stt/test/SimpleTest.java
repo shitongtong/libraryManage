@@ -1,6 +1,14 @@
 package cn.stt.test;
 
 import cn.stt.util.ListSortUtil;
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.client.solrj.impl.XMLResponseParser;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.SolrDocumentList;
+import org.apache.solr.common.params.SolrParams;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -52,4 +60,30 @@ public class SimpleTest {
         System.out.println(listMember);
 
     }
+
+    /*@Test
+    public void testSolr(){
+        String url = "http://127.0.0.1:8983/solr";
+        SolrServer solrServer = new SolrServer(url);
+        solrServer.setMaxRetries(1);
+        solrServer.setConnectionTimeout(60000);
+        solrServer.setParser(new XMLResponseParser());
+        solrServer.setSoTimeout(10000);
+        solrServer.setDefaultMaxConnectionsPerHost(100);
+        solrServer.setMaxTotalConnections(100);
+        solrServer.setFollowRedirects(false);
+        solrServer.setAllowCompression(true);
+
+        SolrQuery query=new SolrQuery();
+        query.setQuery("name:doc");
+        SolrQuery.SortClause sortClause=new SolrQuery.SortClause("name",SolrQuery.ORDER.desc);
+        query.addSort(sortClause);
+        QueryResponse resp=solrServer.query(query);
+        SolrDocumentList docs=resp.getResults();
+        for(SolrDocument doc:docs){
+            String id=(String)doc.get("id");
+            String name=(String)doc.get("name");
+            Float price=(Float)doc.get("price");
+            System.out.println("id="+id+"\t name="+name+"\t price="+price);
+        }*/
 }

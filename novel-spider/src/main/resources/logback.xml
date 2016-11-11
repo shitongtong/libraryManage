@@ -19,7 +19,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>logs/spider.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>logs/spider.%d{yyyy-MM-dd-HHmmss}.log</FileNamePattern>
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <encoder>

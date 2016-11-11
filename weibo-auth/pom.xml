@@ -31,9 +31,85 @@
             <artifactId>commons-logging</artifactId>
             <version>1.1</version>
         </dependency>
-
-
     </dependencies>
 
+
+    <!--
+        这里就是不同的resources文件夹, 这里只区分本地 产品;
+        设置为true的就是默认被激活的. 所以后面打包默认就是本地;
+    -->
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <package.environment>local</package.environment>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>product</id>
+            <properties>
+                <package.environment>product</package.environment>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <!--打包后war包名称为项目名-->
+        <finalName>${project.artifactId}</finalName>
+        <!--
+            这里就是设置资源文件目录, public里面存放公用的,
+            比如Spring的配置文件, 就是本地与产品都一样的;
+            local 与 product一看就知道了;
+        -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>local/*</exclude>
+                    <exclude>product/*</exclude>
+                    <exclude>public/*</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
+        <!--    这里就是maven打war包的插件了  -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                    <!--<warName>book</warName>-->
+                    <webResources>
+                        <resource>
+                            <!--${package.environment}动态指定文件夹了.-->
+                            <directory>src/main/resources/${package.environment}</directory>
+                            <targetPath>WEB-INF/classes</targetPath>
+                            <filtering>true</filtering><!--这里一定需要设置为true才行.-->
+                        </resource>
+                        <resource>
+                            <directory>src/main/resources/public</directory>
+                            <targetPath>WEB-INF/classes</targetPath>
+                            <filtering>true</filtering><!--这里一定需要设置为true才行.-->
+                        </resource>
+                        <!--<resource>-->
+                        <!--<directory>${project.build.directory}/classes</directory>-->
+                        <!--<includes>-->
+                        <!--<include>**/*.properties</include>-->
+                        <!--<include>**/*.xml</include>-->
+                        <!--</includes>-->
+                        <!--</resource>-->
+                    </webResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

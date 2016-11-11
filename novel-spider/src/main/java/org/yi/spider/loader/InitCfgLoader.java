@@ -6,14 +6,14 @@
 package org.yi.spider.loader;
 
 import ch.qos.logback.core.joran.spi.JoranException;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
+import java.io.*;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import org.apache.commons.configuration.ConfigurationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.yi.spider.constants.GlobalConfig;
 import org.yi.spider.enums.ProgramEnum;
 import org.yi.spider.model.Category;
@@ -24,6 +24,9 @@ import org.yi.spider.utils.LogUtils;
 import org.yi.spider.utils.PropertiesUtils;
 
 public class InitCfgLoader {
+
+    private static Logger logger = LoggerFactory.getLogger(InitCfgLoader.class);
+
     public InitCfgLoader() {
     }
 
@@ -48,8 +51,12 @@ public class InitCfgLoader {
 
     private static void loadLogback() throws JoranException, IOException {
         try {
-            LogUtils.load(FileUtils.locateAbsolutePathFromClasspath("logback.xml").getAbsolutePath());
+            File file = FileUtils.locateAbsolutePathFromClasspath("logback.xml");
+            String absolutePath = file.getAbsolutePath();
+            logger.info("absolutePath:"+absolutePath);
+            LogUtils.load(absolutePath);
         } catch (IOException var1) {
+            logger.error(var1.getMessage(),var1);
             throw new IOException("查找logback.xml失败！");
         } catch (JoranException var2) {
             throw new JoranException(var2.getMessage());
