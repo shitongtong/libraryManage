@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.channels.FileChannel;
@@ -36,6 +37,14 @@ public class FileUtils {
     }
 
     public static File fileFromURL(URL url) {
+        File file = null;
+        /*try {
+            file = new File(url.toURI());
+        } catch (URISyntaxException e) {
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }*/
+
         logger.info("url.getProtocol():"+url.getProtocol());
         logger.info("url.getFile():"+url.getFile());
 //        if(url != null && url.getProtocol().equals("file")) {
@@ -55,6 +64,8 @@ public class FileUtils {
         } else {
             return null;
         }
+
+//        return file;
     }
 
     public static String getBasePath(URL url) {

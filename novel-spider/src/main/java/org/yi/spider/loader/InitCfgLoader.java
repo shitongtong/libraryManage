@@ -58,9 +58,9 @@ public class InitCfgLoader {
             logger.info("absolutePath:"+absolutePath);
             logger.info("filePath:"+filePath);
             logger.info("name:"+name);
-//            LogUtils.load(absolutePath);
+            LogUtils.load(absolutePath);
 //            LogUtils.load(filePath);
-            LogUtils.load(name);
+//            LogUtils.load(name);
         } catch (IOException var1) {
             logger.error(var1.getMessage(),var1);
             throw new IOException("查找logback.xml失败！");
