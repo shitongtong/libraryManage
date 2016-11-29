@@ -31,7 +31,7 @@ public class InitCfgLoader {
     }
 
     public static void load() throws Exception {
-        loadLogback();
+//        loadLogback();
         loadCollectConfig();
         loadCategories();
         loadSiteConfig();
@@ -81,7 +81,15 @@ public class InitCfgLoader {
         BufferedReader reader = null;
 
         try {
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream(FileUtils.locateAbsolutePathFromClasspath("category.ini")), "UTF-8"));
+//            File file = FileUtils.locateAbsolutePathFromClasspath("category.ini");
+//            String filePath = FileUtils.locateFromClasspath("category.ini").getFile();
+//            reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
+
+            //返回读取指定资源的输入流
+            ClassLoader loader = Thread.currentThread().getContextClassLoader();
+            InputStream is = loader.getResourceAsStream("category.ini");
+            reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+
             String e = null;
             boolean grade = true;
 
@@ -108,12 +116,14 @@ public class InitCfgLoader {
 
             reader.close();
         } catch (Exception var12) {
+            logger.debug(var12.getMessage(),var12);
             throw new Exception("加载分类异常！");
         } finally {
             if(reader != null) {
                 try {
                     reader.close();
                 } catch (IOException var11) {
+                    logger.debug(var11.getMessage(),var11);
                     throw new IOException("IO异常！");
                 }
             }

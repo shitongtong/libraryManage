@@ -309,11 +309,15 @@ public class FileUtils {
 
     public static List<String> readFile2List(String fileName, String charset) {
         ArrayList list = new ArrayList();
-        File file = locateAbsolutePathFromClasspath(fileName);
+//        File file = locateAbsolutePathFromClasspath(fileName);
 
         try {
-            InputStreamReader e = new InputStreamReader(new FileInputStream(file), charset);
-            BufferedReader bufferedReader = new BufferedReader(e);
+//            InputStreamReader e = new InputStreamReader(new FileInputStream(file), charset);
+//            BufferedReader bufferedReader = new BufferedReader(e);
+            //返回读取指定资源的输入流
+            ClassLoader loader = Thread.currentThread().getContextClassLoader();
+            InputStream is = loader.getResourceAsStream(fileName);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is,charset));
             String lineTxt = null;
 
             while((lineTxt = bufferedReader.readLine()) != null) {
@@ -322,7 +326,7 @@ public class FileUtils {
                 }
             }
 
-            e.close();
+            is.close();
         } catch (IOException var7) {
             var7.printStackTrace();
         }
