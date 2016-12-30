@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet">
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+</head>
+
+<style>
+	
+	
+</style>
+
+<body>
+	
+	<div class="container" style="background: red; height: 1000px;;">
+		
+		<div class="panel panel-success" >
+		
+\
+			<div class="panel-heading">
+				标题
+			</div>
+             <div class="panel-body">
+             	<div>
+				<div class="col-md-3 col-sm-6 col-xs-6" style="background:cadetblue;">
+					<button id="btn" class="btn btn-info">登录</button>
+					
+					 <!-- Modal -->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Forgot Password ?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Enter your e-mail address below to reset your password.</p>
+                        <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                        <button class="btn btn-primary" type="button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal -->
+					
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-6" style="background: cornflowerblue;">
+					
+					2222
+				</div>
+				<div class="col-md-3 col-sm-6 hidden-xs" style="background: cadetblue;">
+					
+					3333
+				</div>
+				<div class="col-md-3 col-sm-6 hidden-xs" style="background: cornflowerblue;">
+					
+					4444
+				</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel">
+			<div class="panel-heading">
+					  表单
+				</div>
+			<div class="panel-body">
+				<form role="form" >
+	            <div class="form-group">
+                   <label for="inputEmail1" class="control-label">Email</label>
+                    <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                      
+                  </div>
+	             <div class="form-group">
+	           	   <label>密码</label>
+	           	   <input type="password" class="form-control" />
+	           </div>
+	            <div class="form-group">
+	              <button type="submit" class="btn btn-primary">Submit</button>
+	           </div>
+				</form>
+			</div>
+		</div>
+		
+		<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+	</div>
+	
+	
+
+	<script>
+	$("#btn").click(function() {
+		
+        $('#myModal').modal('show');
+});
+	
+
+</script>
+	
+	
+</body>
+
+
+
+
+</html>

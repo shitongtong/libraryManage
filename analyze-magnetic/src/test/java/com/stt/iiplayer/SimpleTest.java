@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.Connection;
@@ -31,23 +32,24 @@ public class SimpleTest {
     @Test
     public void testBufferReader() throws FileNotFoundException {
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("D:\\书籍\\Java与模式(清晰书签版).pdf")));
-        for (int i = 0;i <10000; i++){
+        for (int i = 0;i <100000; i++){
 //            BufferedReader bufferedReader1 = new BufferedReader(new InputStreamReader(new FileInputStream("D:\\书籍\\Java与模式(清晰书签版).pdf")));
-            new Thread(new Runnable() {
+            /*new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    /*try {
+                    *//*try {
                         BufferedReader bufferedReader1 = new BufferedReader(new InputStreamReader(new FileInputStream("D:\\书籍\\Java与模式(清晰书签版).pdf")));
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
-                    }*/
+                    }*//*
                     char[] cb = new char[8192];
                     String s = sendGet("http://hosadmin.yabibuy.com/wema-hos-admin/home.do");
                     System.out.println(s);
                     System.out.println("================================================================");
                 }
-            }).start();
-//            char[] cb = new char[819200000];
+            }).start();*/
+            char[] cb = new char[8192];
+
 //            sendGet("http://hosadmin.yabibuy.com/wema-hos-admin/home.do");
         }
 
@@ -58,11 +60,13 @@ public class SimpleTest {
     public static String sendGet(String url) {
         String result = "";
         BufferedReader in = null;
+        HttpURLConnection connection = null;
         try {
             String urlNameString = url;
             URL realUrl = new URL(urlNameString);
             // 打开和URL之间的连接
-            URLConnection connection = realUrl.openConnection();
+//            URLConnection connection = realUrl.openConnection();
+            connection = (HttpURLConnection)realUrl.openConnection();
             // 设置通用的请求属性
             connection.setRequestProperty("accept", "*/*");
             connection.setRequestProperty("connection", "Keep-Alive");
@@ -90,6 +94,9 @@ public class SimpleTest {
                 if (in != null) {
                     in.close();
                 }
+                if (connection != null){
+                    connection.disconnect();
+                }
             } catch (Exception e2) {
                 e2.printStackTrace();
             }
@@ -97,9 +104,11 @@ public class SimpleTest {
         return result;
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
+//    public void doGet(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        request.setCharacterEncoding("utf-8");
+    @Test
+    public void testDoGet(){
         Connection conn1=null;
         String dbDriver="com.mysql.jdbc.Driver";
         String dbUrl="jdbc:mysql://183.232.235.30:3306/ultrax?useUnicode=true&characterEncoding=utf-8";//根据实际情况变化
@@ -119,7 +128,7 @@ public class SimpleTest {
         }
 
 
-        for(int page=24593;page<160000;page++)
+        for(int page=0;page<160000;page++)
         {
             System.out.println("正在处理第+"+(page+1)+"页");
             Statement stmt1;
@@ -140,6 +149,9 @@ public class SimpleTest {
                     String url="http://183.232.235.30/weiyu.php?sha="+sha;
                     String get_http_url;
                     get_http_url = sendGet(url);
+                    System.out.println("============================================================");
+                    System.out.println(get_http_url);
+                    System.out.println("============================================================");
                     name = name.replace("【无效链接】 ", "");
                     name = name.replace("【处理中,请等待】 ", "");
                     if(get_http_url.length()>80)
@@ -156,11 +168,11 @@ public class SimpleTest {
                             insertsql=insertsql+df.format(new Date())+ "','";
                             insertsql=insertsql+ name + "','";
                             insertsql=insertsql + file_size +"')";
-                            PreparedStatement statement = conn1.prepareStatement(insertsql);
-                            statement.executeUpdate();
-
+//                            PreparedStatement statement = conn1.prepareStatement(insertsql);
+//                            statement.executeUpdate();
+                            System.out.println(insertsql);
                             System.out.println(df.format(new Date())+"_"+"插入数据库"+hash+"_"+index);
-                        } catch (SQLException e) {
+                        } catch (Exception e) {
                             System.out.println("插入数据库时出错：");
                             e.printStackTrace();
                         }
