@@ -9,9 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>chapter7</artifactId>
+    <artifactId>chapter9</artifactId>
     <packaging>war</packaging>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -54,12 +53,22 @@
             <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
 
 
     </dependencies>
 
     <build>
-        <finalName>chapter7</finalName>
+        <finalName>chapter9</finalName>
         <plugins>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>

@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>chapter7</artifactId>
     <packaging>war</packaging>
+    <artifactId>chapter8</artifactId>
+
 
     <dependencies>
         <dependency>
@@ -59,7 +59,7 @@
     </dependencies>
 
     <build>
-        <finalName>chapter7</finalName>
+        <finalName>chapter8</finalName>
         <plugins>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
