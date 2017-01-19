@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="example-2">
+    <!--可以用 of 替代 in 作为分隔符，因为它是最接近 JavaScript 迭代器的语法：-->
+    <!--<li v-for="(item, index) in items">-->
+    <li v-for="(item, index) of items">
+        {{ parentMessage }} - {{ index }} - {{ item.message }}
+    </li>
+</ul>
+<!--你也可以用 v-for 通过一个对象的属性来迭代。-->
+<ul id="repeat-object" class="demo">
+    <li v-for="(value,key,index) in object"><!--顺序不能反-->
+        {{index}}.{{key}} : {{ value }}
+    </li>
+</ul>
+<!--v-for 也可以取整数。在这种情况下，它将重复多次模板。-->
+<!--注：不起作用-->
+<div>
+    <span v-for="n in 10">{{ n }}</span>
+</div>
+<div>
+    <span v-for="n of 10">{{ n }}</span>
+</div>
+
+<!--下面是一个简单的 todo list 完整的例子：-->
+<div id="todo-list-example">
+    <input v-model="newTodoText" v-on:keyup.enter="addNewTodo" placeholder="Add a todo">
+    <ul >
+        <li is="todo-item" v-for="(todo,index) in todos" v-bind:title="todo" v-on:remove="todos.splice(index, 1)"></li>
+    </ul>
+</div>
+
+<!--<li id="#haha" v-for="n in evenNumbers">{{ n }}</li>-->
+<li id="#haha" v-for="n in even(numbers)">{{ n }}</li>
+
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+        el:"#haha",
+        data: {
+            numbers: [ 1, 2, 3, 4, 5 ]
+        },
+        computed: {
+            evenNumbers: function () {
+                return this.numbers.filter(function (number) {
+                    return number % 2 === 0
+                })
+            }
+        },
+        methods: {
+            even: function (numbers) {
+                return numbers.filter(function (number) {
+                    return number % 2 === 0
+                })
+            }
+        }
+    });
+
+    Vue.component('todo-item', {
+        template: '\
+    <li>\
+      {{ title }}\
+      <button v-on:click="$emit(\'remove\')">X</button>\
+    </li>\
+  ',
+        props: ['title']
+    })
+    new Vue({
+        el: '#todo-list-example',
+        data: {
+            newTodoText: '',
+            todos: [
+                'Do the dishes',
+                'Take out the trash',
+                'Mow the lawn'
+            ]
+        },
+        methods: {
+            addNewTodo: function () {
+                this.todos.push(this.newTodoText)
+                this.newTodoText = ''
+            }
+        }
+    })
+
+    var example2 = new Vue({
+        el: '#example-2',
+        data: {
+            parentMessage: 'Parent',
+            items: [
+                {message: 'Foo'},
+                {message: 'Bar'}
+            ]
+        }
+    });
+
+    new Vue({
+        el: '#repeat-object',
+        data: {
+            object: {
+                FirstName: 'John',
+                LastName: 'Doe',
+                Age: 30
+            }
+        }
+    });
+</script>
+</body>
+</html>
