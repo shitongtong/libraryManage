@@ -8,7 +8,7 @@ public class MysqlManager {
 	private String dbDriver="com.mysql.jdbc.Driver";   
     private String dbUrl="jdbc:mysql://183.232.235.30:3306/NMPayer?useUnicode=true&characterEncoding=utf-8"; 
     private String dbUser="root";  
-    private String dbPass="woaini";  
+    private String dbPass="woaini";
     private Connection conn=null;
     static MysqlManager pMysqlManager=null;
     public Connection getConn()  

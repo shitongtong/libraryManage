@@ -1,0 +1,7 @@
+health:
+  diskspace:
+    enabled:  false
+
+endpoints:
+  health:
+    sensitive:  false

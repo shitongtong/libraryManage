@@ -11,6 +11,12 @@
     <modules>
         <module>demo1-simple</module>
         <module>demo2-simple</module>
+        <module>activemq</module>
+        <module>actuator</module>
+        <module>actuator-log4j2</module>
+        <module>actuator-noweb</module>
+        <module>actuator-ui</module>
+        <module>amqp</module>
     </modules>
 
     <parent>
@@ -27,6 +33,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

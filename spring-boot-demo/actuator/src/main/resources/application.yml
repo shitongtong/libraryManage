@@ -1,0 +1,33 @@
+management:
+  address:  127.0.0.1
+  info:
+    build:
+      mode: full
+  trace:
+    include:  REQUEST_HEADERS,RESPONSE_HEADERS,ERRORS,PATH_INFO,PATH_TRANSLATED,CONTEXT_PATH,USER_PRINCIPAL,
+              PARAMETERS,QUERY_STRING,AUTH_TYPE,REMOTE_ADDRESS,SESSION_ID,REMOTE_USER
+endpoints:
+  shutdown:
+    enabled:  true
+server:
+  tomcat:
+    basedir:  target/tomcat
+    access_log_enabled: true
+    access_log_pattern: '%h %t "%r" %s %b'
+security:
+  require_ssl:  false
+service:
+  name: Phil
+spring:
+  jmx:
+    enabled:  true
+  jackson:
+    serialization:
+      write_dates_as_timestamps:  false
+info:
+    app:
+        name: esc
+        version: 1.0.0
+        build:
+          artifactId: @project.artifactId@
+          version:  @project.version@
