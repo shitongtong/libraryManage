@@ -17,6 +17,7 @@
         <module>actuator-noweb</module>
         <module>actuator-ui</module>
         <module>amqp</module>
+        <module>aop</module>
     </modules>
 
     <parent>
