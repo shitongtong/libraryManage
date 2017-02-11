@@ -19,6 +19,7 @@
         <module>amqp</module>
         <module>aop</module>
         <module>atmosphere</module>
+        <module>batch</module>
     </modules>
 
     <parent>
