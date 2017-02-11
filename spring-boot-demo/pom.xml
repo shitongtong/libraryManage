@@ -18,6 +18,7 @@
         <module>actuator-ui</module>
         <module>amqp</module>
         <module>aop</module>
+        <module>atmosphere</module>
     </modules>
 
     <parent>
