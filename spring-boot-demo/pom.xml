@@ -20,6 +20,16 @@
         <module>aop</module>
         <module>atmosphere</module>
         <module>batch</module>
+        <module>cache</module>
+        <module>cassandra</module>
+        <module>data-jpa</module>
+        <module>data-mongodb</module>
+        <module>data-neo4j</module>
+        <module>data-redis</module>
+        <module>data-rest</module>
+        <module>data-solr</module>
+        <module>devtool</module>
+        <module>hateoas</module>
     </modules>
 
     <parent>
