@@ -30,6 +30,14 @@
         <module>data-solr</module>
         <module>devtool</module>
         <module>hateoas</module>
+        <module>integration</module>
+        <module>jetty-jsp</module>
+        <module>metrics-dropwizard</module>
+        <module>webservices</module>
+        <module>xml</module>
+        <module>websocket-tomcat</module>
+        <module>websocket-jetty</module>
+        <module>websocket-undertow</module>
     </modules>
 
     <parent>
@@ -43,10 +51,7 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+
 
         <dependency>
             <groupId>junit</groupId>
