@@ -3,6 +3,8 @@ package com.stt.java.base;
 import org.junit.Test;
 import org.springframework.util.Assert;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -16,6 +18,7 @@ public class SimpleTest {
 
     public static void main(String[] args) {
 //        this.AA = "";//报错
+        List<String> list = new ArrayList<>();
     }
 
 
