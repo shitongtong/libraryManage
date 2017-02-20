@@ -1,5 +1,8 @@
 package com.stt.java.base;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 同一个类调用属性和方法，用不用this貌似没有区别啊？？
  * 反编译class文件，发现java编译时都加上了this，那么编写代码时，加上this会提高编译效率吗？？
@@ -23,6 +26,12 @@ public class TestThis {
         System.out.println(nanoTimeEnd - nanoTimeStart);//253654
         System.out.println(endTime - startTime);//0
 
+        List<String> list = new ArrayList<String>();
+        List<Integer> list1 = new ArrayList<Integer>();
+        list.add("aaa");
+        String s = list.get(0);
+        list1.add(11);
+        list1.get(0);
     }
 
     private String str  = "abc";

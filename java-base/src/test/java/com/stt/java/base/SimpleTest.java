@@ -18,7 +18,8 @@ public class SimpleTest {
 
     public static void main(String[] args) {
 //        this.AA = "";//报错
-        List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<String>();
+        List<Integer> list1 = new ArrayList<Integer>();
     }
 
 
