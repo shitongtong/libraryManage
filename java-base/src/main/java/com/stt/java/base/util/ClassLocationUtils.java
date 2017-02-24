@@ -5,7 +5,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.CodeSource;
 import java.security.ProtectionDomain;
-import java.util.List;
 
 /**
  *
@@ -63,7 +62,11 @@ public class ClassLocationUtils {
     }
 
     public static void main(String[] args) {
-        String classLocation = classLocation(List.class);
+        String classLocation = classLocation(Map.class);
+        Map map1 = new Map();
+        map1.print();
+//        Map map = new HashMap();
+//        map.put("","");
         System.out.println("===classLocation==="+classLocation+"======");
     }
 
