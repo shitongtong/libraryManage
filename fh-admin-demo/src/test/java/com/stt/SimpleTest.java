@@ -16,5 +16,6 @@ public class SimpleTest {
         String PASSWORD = "123";
         String passwd = new SimpleHash("SHA-1", USERNAME, PASSWORD).toString();	//密码加密
         System.out.println(passwd);
+
     }
 }
