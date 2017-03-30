@@ -6,13 +6,13 @@ package com.stt.java.base;
  * @author shitongtong
  */
 
-public class Test {
+public class TestTest {
     Person person = new Person("Test");
     static{
         System.out.println("test static");
     }
 
-    public Test() {
+    public TestTest() {
         System.out.println("test constructor");
     }
 
@@ -31,7 +31,7 @@ class Person{
 }
 
 
-class MyClass extends Test {
+class MyClass extends TestTest {
     Person person = new Person("MyClass");
     static{
         System.out.println("myclass static");

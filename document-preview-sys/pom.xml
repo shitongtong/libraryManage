@@ -84,6 +84,18 @@
             <version>2.2</version>
         </dependency>
 
+        <!--<dependency>
+            <groupId>org.icepdf</groupId>
+            <artifactId>icepdf-core</artifactId>
+            <version>4.1.1</version>
+        </dependency>-->
+
+        <!--<dependency>
+            <groupId>org.artofsolving.jodconverter</groupId>
+            <artifactId>jodconverter-core</artifactId>
+            <version>3.0-beta-4</version>
+        </dependency>-->
+
     </dependencies>
 
     <repositories>

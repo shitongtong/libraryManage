@@ -56,9 +56,9 @@ public class DocConverter {
      * 转为PDF
      *
      */
-    private void doc2pdf() throws Exception {
+    public void doc2pdf() throws Exception {
         if (docFile.exists()) {
-            if (!pdfFile.exists()) {
+//            if (!pdfFile.exists()) {
                 OpenOfficeConnection connection = new SocketOpenOfficeConnection(8100);
                 try {
                     connection.connect();
@@ -69,10 +69,12 @@ public class DocConverter {
                     String extName = fileName.substring(fileName.lastIndexOf(".")+1);
                     if("doc".equalsIgnoreCase(extName) || "docx".equalsIgnoreCase(extName)){ //word文档
                         inputDocumentFormat = formatReg.getFormatByFileExtension("doc");
-                    }else if("ppt".equalsIgnoreCase(extName) || "pptx".equalsIgnoreCase(extName)){//ppt
+                    }else if("ppt".equalsIgnoreCase(extName) || "pptx".equalsIgnoreCase(extName)){  //ppt
                         inputDocumentFormat = formatReg.getFormatByFileExtension("ppt");
-                    }else if("xls".equalsIgnoreCase(extName) || "xlsx".equalsIgnoreCase(extName)){//xls
+                    }else if("xls".equalsIgnoreCase(extName) || "xlsx".equalsIgnoreCase(extName)){  //xls
                         inputDocumentFormat = formatReg.getFormatByFileExtension("xls");
+                    }else if("txt".equalsIgnoreCase(extName)){  //txt
+                        inputDocumentFormat = formatReg.getFormatByFileExtension("txt");
                     }else{
                         throw new Exception("未知格式文件，不能转换！！！");
                     }
@@ -94,10 +96,12 @@ public class DocConverter {
                 } catch (Exception e) {
                     e.printStackTrace();
                     throw e;
+                }finally {
+                    connection.disconnect();
                 }
-            } else {
-                System.out.println("****已经转换为pdf，不需要再进行转化****");
-            }
+//            } else {
+//                System.out.println("****已经转换为pdf，不需要再进行转化****");
+//            }
         } else {
             System.out.println("****swf转换器异常，需要转换的文档不存在，无法转换****");
         }
@@ -107,7 +111,7 @@ public class DocConverter {
      * 转换成 swf
      */
     @SuppressWarnings("unused")
-    private void pdf2swf() throws Exception {
+    public void pdf2swf() throws Exception {
         Runtime r = Runtime.getRuntime();
         if (!swfFile.exists()) {
             if (pdfFile.exists()) {
