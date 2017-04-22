@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath*:/applicationContext.xml</param-value>
+    </context-param>
+
+
+    <!-- 编码均为UTF-8 -->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!-- Spring 容器启动监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+
+
+    <!-- SpringMVC的核心控制器(前端控制器) -->
+    <servlet>
+        <servlet-name>springMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 指定配置文件的全名，如果不指定，则为这里的servlet-name的属性值+"-servlet.xml" -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath*:/springmvc-servlet.xml</param-value>
+        </init-param>
+        <!-- 启动tomcat服务器时创建此serlvet核心对象 -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- 拦截请求，/ 是所有请求 -->
+    <servlet-mapping>
+        <servlet-name>springMVC</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
