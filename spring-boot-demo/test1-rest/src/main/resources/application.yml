@@ -1,0 +1,61 @@
+#应用程序端口配置
+server: 
+  port: 20007
+#  tomcat:
+#    access-log-enabled: true
+      
+#日志配置    
+logging: 
+#    file: 
+#    path: 
+    config: classpath:logback.xml
+#    level: 
+#        org.springframework.web: ERROR
+#        org.springframework.beans: ERROR
+
+
+spring:
+  profiles:
+    active: ${spring.profiles.active}
+    #active: dev
+
+---
+# 开发环境配置
+spring:
+  profiles: dev
+#server:
+#  port: 20003
+#  tomcat:
+#    access-log-enabled: true
+dubbo:
+  registry:
+    address: zookeeper://192.168.1.182:2181
+upload:
+  server:
+    address:  http://192.168.1.219:6000
+ip:
+  address:  192.168.1.219
+
+---
+# 测试环境配置
+spring:
+  profiles: test
+dubbo:
+  registry:
+    address: zookeeper://192.168.1.219:2181
+#server:
+#  port: 20003
+#  tomcat:
+#    access-log-enabled: true
+
+---
+# 正式环境配置
+spring:
+  profiles: prd
+dubbo:
+  registry:
+    address: zookeeper://10.172.204.193:2181?backup=10.172.204.197:2181,10.24.240.145:2181
+#server:
+#  port: 20003
+#  tomcat:
+#    access-log-enabled: true

@@ -169,5 +169,20 @@ public class SimpleTestMain {
         System.out.println(str);
     }
 
+    @Test
+    public void testSplit(){
+        String s = "aaa";
+        String[] split = s.split(",");
+        System.out.println(Arrays.asList(split).size());
+        System.out.println(Arrays.toString(split));
+        System.out.println(split);
+    }
+
+    @Test
+    public void testIntEquest(){
+        int a = -1;
+        System.out.println(a==-1);
+    }
+
 
 }

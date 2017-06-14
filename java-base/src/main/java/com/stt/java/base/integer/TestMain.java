@@ -1,5 +1,7 @@
 package com.stt.java.base.integer;
 
+import org.junit.Test;
+
 /**
  * @Author shitongtong
  * <p>
@@ -23,5 +25,12 @@ public class TestMain {
 
     public static void main(String[] args){
         System.out.println(stringSize(1000000000));
+    }
+
+    @Test
+    public void compare(){
+        Integer a = 999;
+        int b = 999;
+        System.out.println(a==b);
     }
 }

@@ -67,5 +67,21 @@ public class TestMain {
         System.out.println(password1);
     }
 
+    @Test
+    public void test2(){
+        String sha512Hex = SecurityUtil.hashSha512Hex("123456");
+        System.out.println(sha512Hex);//ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413
+
+        //*6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9
+    }
+
+    @Test
+    public void test3(){
+        String password = SecurityUtil.hashSha512Hex("18900000040" + "&" + "123456" + ":onlyhi");
+        long timestamp = 5454654564L;
+        String realPwd = SecurityUtil.hashSha512Hex(password + timestamp);
+        System.out.println(realPwd);
+    }
+
 
 }

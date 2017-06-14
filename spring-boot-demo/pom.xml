@@ -38,6 +38,8 @@
         <module>websocket-tomcat</module>
         <module>websocket-jetty</module>
         <module>websocket-undertow</module>
+        <module>test1-rest</module>
+        <module>test2-rest</module>
     </modules>
 
     <parent>
