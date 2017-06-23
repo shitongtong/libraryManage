@@ -11,7 +11,7 @@ import org.junit.Test;
 public class TestMain {
 
     @Test
-    public void testStudentSha512(){
+    public void testStudentSha512() {
         String password1 = SecurityUtil.hashSha512Hex("13994413502" + "&" + "123456" + ":onlyhi");
         String password2 = SecurityUtil.hashSha512Hex("15936665112" + "&" + "123456" + ":onlyhi");
         String password3 = SecurityUtil.hashSha512Hex("15073438981" + "&" + "123456" + ":onlyhi");
@@ -27,12 +27,12 @@ public class TestMain {
         password5==03edc6e955acfb15b47971152e37369aad54b15ec885b20be178e312fe0b3ea18435a2210c674ff799fd39c84b93bc286c27db68a8421f0f7861b89a9f9a7e94
         password6==3fe31aef40f252a752d6d893e40f2a38d68f81e3af80440465f2f7a3b9795bbd7268f9d01b05a1b1d55b55bcad7d1d338bbcb4bf2af3c87de54b4be0a0198e3e
          */
-        System.out.println("password1=="+password1);
-        System.out.println("password2=="+password2);
-        System.out.println("password3=="+password3);
-        System.out.println("password4=="+password4);
-        System.out.println("password5=="+password5);
-        System.out.println("password6=="+password6);
+        System.out.println("password1==" + password1);
+        System.out.println("password2==" + password2);
+        System.out.println("password3==" + password3);
+        System.out.println("password4==" + password4);
+        System.out.println("password5==" + password5);
+        System.out.println("password6==" + password6);
 
         long timestamp = 5454654564L;
 //        timestamp = 1491897385490L;
@@ -43,7 +43,7 @@ public class TestMain {
     }
 
     @Test
-    public void testTeacherSha512(){
+    public void testTeacherSha512() {
 
         //测试环境：
         //1:    952d710bced1c5b0bfc37384c0ce61a684105656f52e7f84790f5a3603ecea02dd7f2f655865101a872a9a4ef06dbc33972c14dc569799741a61b0cf602519aa
@@ -53,7 +53,7 @@ public class TestMain {
         //公网测试环境：
 //        String password = SecurityUtil.hashSha512Hex("18260051329" + "&" + "123456" + ":onlyhi");
         //一次加密： bccead564888eeac672b8458ba8d888b25142df78fa56a8c396e3da72a14240a601a059853ee7c1cf75d2edf9a7d4a64fb669c2b42c7f0dbfab6f0d6cd203519
-        System.out.println("password=="+password);
+        System.out.println("password==" + password);
 
         long timestamp = 5454654564L;
         String realPwd = SecurityUtil.hashSha512Hex(password + timestamp);
@@ -62,13 +62,13 @@ public class TestMain {
     }
 
     @Test
-    public void test1(){
+    public void test1() {
         String password1 = SecurityUtil.hashSha512Hex("15052851735" + "&" + "123456" + ":onlyhi");
         System.out.println(password1);
     }
 
     @Test
-    public void test2(){
+    public void test2() {
         String sha512Hex = SecurityUtil.hashSha512Hex("123456");
         System.out.println(sha512Hex);//ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413
 
@@ -76,11 +76,22 @@ public class TestMain {
     }
 
     @Test
-    public void test3(){
+    public void test3() {
         String password = SecurityUtil.hashSha512Hex("18900000040" + "&" + "123456" + ":onlyhi");
         long timestamp = 5454654564L;
         String realPwd = SecurityUtil.hashSha512Hex(password + timestamp);
         System.out.println(realPwd);
+    }
+
+    @Test
+    public void addPatriarch() {
+        String[] strs = {"18920000001", "18920000002", "18920000003", "18920000004", "18920000005", "18920000006", "18920000007", "18920000008",
+                "18920000009", "18920000010", "18920000011", "18920000012"};
+        for (int i = 0; i < strs.length; i++) {
+            String phone = strs[i];
+            String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
+            System.out.println(password);
+        }
     }
 
 

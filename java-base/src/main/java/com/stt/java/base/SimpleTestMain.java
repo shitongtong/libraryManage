@@ -3,6 +3,7 @@ package com.stt.java.base;
 import org.junit.Test;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.net.InetAddress;
 import java.net.URLEncoder;
 import java.net.UnknownHostException;
@@ -184,5 +185,14 @@ public class SimpleTestMain {
         System.out.println(a==-1);
     }
 
+    @Test
+    public void test(){
+        double i = 6.00 / 60;
+        System.out.println(i);
+        double b = 3d;
+        BigDecimal bigDecimal = new BigDecimal(b / 60);
+        double doubleValue = bigDecimal.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+        System.out.println(doubleValue);
+    }
 
 }
