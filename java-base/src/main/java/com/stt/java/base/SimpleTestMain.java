@@ -195,4 +195,9 @@ public class SimpleTestMain {
         System.out.println(doubleValue);
     }
 
+    @Test
+    public void testCard(){
+//        IDValidator
+    }
+
 }

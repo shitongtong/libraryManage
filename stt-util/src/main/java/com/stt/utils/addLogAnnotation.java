@@ -50,6 +50,11 @@ public class addLogAnnotation {
             while ((tempString = reader.readLine()) != null) {
                 sb.append(tempString);
                 sb.append("\r\n");
+                if (tempString.contains("package")){
+                    sb.append("\r\n");
+                    sb.append("\r\n");
+                    sb.append("import cn.onlyhi.common.annotation.LogRecordAnnotation;");
+                }
                 if (tempString.contains("@ResponseBody")) {
                     sb.append("\t@LogRecordAnnotation(moduleCode = ");
                     sb.append(moduleCode);

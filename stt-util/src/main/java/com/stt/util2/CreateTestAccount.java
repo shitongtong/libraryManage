@@ -108,7 +108,7 @@ public class CreateTestAccount {
             preparedStatement.executeUpdate();
             preparedStatement.close();
 
-            System.out.print("'" + course.getUuid() + "',");
+            System.out.println("'" + course.getUuid() + "',");
         }
         System.out.println("==================创建课程列表END=====================");
 
@@ -130,7 +130,7 @@ public class CreateTestAccount {
             course.setLeadsUuid(leads.getUuid());
             course.setCourseType(false);
             course.setLength("1");
-            course.setCourseDate("2017-05-19");
+            course.setCourseDate("2017-06-27");
             course.setStartTime("00:30");
             course.setEndTime("23:30");
             course.setTeacherUuid(teacher.getUuid());
