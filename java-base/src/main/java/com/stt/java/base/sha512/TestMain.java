@@ -12,6 +12,7 @@ public class TestMain {
 
     @Test
     public void testStudentSha512() {
+
         String password1 = SecurityUtil.hashSha512Hex("13994413502" + "&" + "123456" + ":onlyhi");
         String password2 = SecurityUtil.hashSha512Hex("15936665112" + "&" + "123456" + ":onlyhi");
         String password3 = SecurityUtil.hashSha512Hex("15073438981" + "&" + "123456" + ":onlyhi");
@@ -63,8 +64,14 @@ public class TestMain {
 
     @Test
     public void test1() {
-        String password1 = SecurityUtil.hashSha512Hex("15052851735" + "&" + "123456" + ":onlyhi");
+        String phone = "18353258038";
+        phone = "18900000000";
+        phone = "13916593205";
+        String password1 = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
         System.out.println(password1);
+        //a4bda9cd5a0d4de101022096f564774dd4912240d7afeb947817da7afbfb63308e4b2cb0477876392f0ab778282202bf931ca5694ca9aab95909f3f4967f3f5e
+        //13a2eae154e9fb77e5a2d6c7492b346aed553f88a7888255b94830cbce6db3457b51ddf49879a23eef4911bdeee8afa7c8c5eaa27fb957afb73eb1bf47d5bdcd
+        //47108679cdf08cc75a483db1019adada5c127e4518e94445b02cc8be2f55d6da3d3091f65e9272484c7c3aabc9cdfb3bead8b07283196796ae207390fed9241d
     }
 
     @Test
@@ -77,7 +84,8 @@ public class TestMain {
 
     @Test
     public void test3() {
-        String password = SecurityUtil.hashSha512Hex("18900000040" + "&" + "123456" + ":onlyhi");
+        String password = SecurityUtil.hashSha512Hex("13916593205" + "&" + "123456" + ":onlyhi");
+        System.out.println(password);
         long timestamp = 5454654564L;
         String realPwd = SecurityUtil.hashSha512Hex(password + timestamp);
         System.out.println(realPwd);

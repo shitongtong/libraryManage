@@ -108,8 +108,9 @@ public class CreateTestAccount {
             preparedStatement.executeUpdate();
             preparedStatement.close();
 
-            System.out.println("'" + course.getUuid() + "',");
+            System.out.print("'" + course.getUuid() + "',");
         }
+        System.out.println();
         System.out.println("==================创建课程列表END=====================");
 
 

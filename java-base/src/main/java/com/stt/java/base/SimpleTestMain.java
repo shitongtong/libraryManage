@@ -1,13 +1,24 @@
 package com.stt.java.base;
 
+import com.stt.java.base.util.SecurityUtil;
 import org.junit.Test;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.InetAddress;
 import java.net.URLEncoder;
 import java.net.UnknownHostException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  * @Author shitongtong
@@ -198,6 +209,12 @@ public class SimpleTestMain {
     @Test
     public void testCard(){
 //        IDValidator
+    }
+
+    @Test
+    public void test11(){
+        String password = SecurityUtil.hashMD5Hex("");
+        System.out.println(password);
     }
 
 }

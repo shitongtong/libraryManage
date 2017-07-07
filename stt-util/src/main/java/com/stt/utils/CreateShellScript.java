@@ -24,6 +24,11 @@ public class CreateShellScript {
 
 
         String destBasePath = "D:\\workDir\\jar包启动脚本\\dev";
+        String env = "dev";
+
+        destBasePath = "D:\\workDir\\jar包启动脚本\\test";
+        env = "test";
+
         String[] baseNames = {"common", "user", "agent", "teacher", "cc", "cr", "sr", "client", "finance", "marketopt", "order", "teachdept", "kpi"};
         for (int i = 0; i < baseNames.length; i++) {
             String baseName = baseNames[i];
@@ -32,15 +37,17 @@ public class CreateShellScript {
             String restName = baseName + "-rest";
             String restShellName = baseName + "-rest-restart.sh";
             File serviceFile = new File(destBasePath + File.separator + "service", serviceShellName);
-            if (!serviceFile.exists()){
-                serviceFile.mkdirs();
+            File parentFile = serviceFile.getParentFile();
+            if (!parentFile.exists()){
+                parentFile.mkdirs();
             }
             File restFile = new File(destBasePath + File.separator + "rest", restShellName);
-            if (!restFile.exists()){
-                restFile.mkdirs();
+            File parentFile1 = restFile.getParentFile();
+            if (!parentFile1.exists()){
+                parentFile1.mkdirs();
             }
-            String serviceContent = templateServiceContent.replace("#{template}", serviceName).replace("#{config}","dev");
-            String restContent = templateRestContent.replace("#{template}", restName).replace("#{config}","dev");
+            String serviceContent = templateServiceContent.replace("#{template}", serviceName).replace("#{config}",env);
+            String restContent = templateRestContent.replace("#{template}", restName).replace("#{config}",env);
             writerFile(serviceFile, serviceContent);
             writerFile(restFile, restContent);
         }
