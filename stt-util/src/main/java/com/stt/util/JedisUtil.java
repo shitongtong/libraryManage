@@ -63,12 +63,13 @@ public class JedisUtil {
             JedisPoolConfig config = new JedisPoolConfig();
 //            config.setMaxActive(JRedisPoolConfig.MAX_ACTIVE);
             config.setMaxTotal(100);
-            config.setMaxIdle(5);
+            config.setMaxIdle(300);
 //            config.setMaxWait(JRedisPoolConfig.MAX_WAIT);
             config.setMaxWaitMillis(100*1000);
             config.setTestOnBorrow(true);
 //            config.setTestOnReturn(true);
-            jedisPool = new JedisPool(config, "192.168.1.250", 6379);
+            jedisPool = new JedisPool(config, "192.168.1.250", 6379,2000,"",5);//内测环境
+//            jedisPool = new JedisPool(config, "106.14.46.51", 6300,2000,"onlyhi.cn",5);//公网测试换
         }
     }
 

@@ -11,7 +11,7 @@ import java.io.FileWriter;
  * <p>
  * Created by shitongtong on 2017/6/23.
  */
-public class addLogAnnotation {
+public class AddLogAnnotation {
 
     public static void main(String[] args) throws Exception {
         String path = "D:\\project_git\\onlyhi-crm\\onlyhi-kpi\\kpi-rest\\src\\main\\java\\cn\\onlyhi\\kpi\\controller";
