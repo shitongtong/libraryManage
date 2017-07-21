@@ -217,4 +217,12 @@ public class SimpleTestMain {
         System.out.println(password);
     }
 
+    @Test
+    public void testI(){
+        int maxValue = Integer.MAX_VALUE;
+        System.out.println(maxValue);//2147483647
+        long value = Long.MAX_VALUE;
+        System.out.println(value);//9223372036854775807
+    }
+
 }

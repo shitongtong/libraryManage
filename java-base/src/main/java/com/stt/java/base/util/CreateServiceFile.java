@@ -26,7 +26,13 @@ public class CreateServiceFile {
             String serviceFileName = mapperFileName.replace("Mapper", "Service");
             String serviceImplFileName = mapperFileName.replace("Mapper", "ServiceImpl");
             File serviceFile = new File(serviceDir,serviceFileName);
+            if (!serviceFile.getParentFile().exists()){
+                serviceFile.getParentFile().mkdirs();
+            }
             File serviceImplFile = new File(serviceImplDir,serviceImplFileName);
+            if (!serviceImplFile.getParentFile().exists()){
+                serviceImplFile.getParentFile().mkdirs();
+            }
             createServiceFile(mapperFile,serviceFile);
             createServiceImplFile(mapperFile,serviceImplFile);
         }

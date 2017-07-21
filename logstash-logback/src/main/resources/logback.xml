@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <!--<destination>192.168.1.182:9999</destination>-->
+        <port>9999</port>
+        <!-- encoder is required -->
+        <!--<encoder class="net.logstash.logback.encoder.LogstashEncoder" />-->
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="stash" />
+    </root>
+</configuration>
