@@ -56,4 +56,9 @@ public interface EndPoints {
 
 	JerseyWebTarget CHATFILES_TARGET = APPLICATION_TEMPLATE
 			.path("chatfiles");
+
+	/**
+	 * 修改用户推送显示昵称
+	 */
+	JerseyWebTarget UPDATE_NICKNAME_TARGET = USERS_TARGET.path("{username}");
 }

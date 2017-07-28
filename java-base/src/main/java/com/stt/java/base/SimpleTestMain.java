@@ -225,4 +225,11 @@ public class SimpleTestMain {
         System.out.println(value);//9223372036854775807
     }
 
+    @Test
+    public void test1(){
+        int amount = 12791;
+        System.out.println(String.valueOf(amount/100d));
+        System.out.println(true?1:0);
+    }
+
 }
