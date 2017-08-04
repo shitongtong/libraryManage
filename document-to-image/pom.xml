@@ -9,6 +9,60 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+        <!--  documents4j:office2pdf -->
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-api</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-local</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-transformer-api</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-transformer-msoffice-word</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
+
+        <!-- docx4j:office2pdf-->
+        <dependency>
+            <groupId>org.docx4j</groupId>
+            <artifactId>docx4j</artifactId>
+            <version>3.3.5</version>
+        </dependency>
+
+        <!-- icepdf -->
+        <dependency>
+            <groupId>org.icepdf</groupId>
+            <artifactId>icepdf-core</artifactId>
+            <version>5.0.7</version>
+            <scope>system</scope>
+            <systemPath>D:/jar/icepdf/icepdf-core-5.0.7.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.icepdf</groupId>
+            <artifactId>icepdf-viewer</artifactId>
+            <version>5.0.7</version>
+            <scope>system</scope>
+            <systemPath>D:/jar/icepdf/icepdf-viewer-5.0.7.jar</systemPath>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>

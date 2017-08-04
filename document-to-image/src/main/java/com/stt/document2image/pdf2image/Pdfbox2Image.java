@@ -13,12 +13,16 @@ import java.io.IOException;
  *
  * @author shitongtong
  */
-public class Pdf2Image {
+public class Pdfbox2Image {
 
+    
     public static void main(String[] args) throws IOException {
+        System.out.println("转换开始。。。");
+        long startTime = System.currentTimeMillis();
         String filePath = "D:\\document2image\\准妈妈孕早期注意事项.pdf";
         filePath = "D:\\testoffice2pdf\\test4.pdf";
-        filePath = "D:\\pdf2image\\1493374159558_231718158.pdf";
+        filePath = "D:\\testoffice2pdf\\Java基础PPT.pdf"; // TODO: 2017/8/4 文件大小2.44M 图片307张。花费时间144秒(200dpi)
+        filePath = "D:\\testoffice2pdf\\页数多大小小.pdf";    //302K 100dpi 14s
         File file = new File(filePath);
         String fileNameNoSuffix = file.getName().substring(0, file.getName().indexOf("."));
         String savePath = file.getParent() + File.separator + fileNameNoSuffix;
@@ -32,15 +36,15 @@ public class Pdf2Image {
         int pageCount = doc.getNumberOfPages();
         System.out.println("pdf pageSize==" + pageCount);
         for (int i = 0; i < pageCount; i++) {
-            BufferedImage image = renderer.renderImageWithDPI(i, 296);  //296
+            BufferedImage image = renderer.renderImageWithDPI(i, 100);  //296   200:144s; 100:55s; 75:42s   50:28s
             String filename = saveDir + File.separator + fileNameNoSuffix + "_" + (i + 1) + ".jpg";
 //            ImageIO.write(image, "PNG", new File(filename));
 
             /* 原始图像的宽度和高度 */
             int width = image.getWidth();
             int height = image.getHeight();
-            System.out.println("width=" + width);
-            System.out.println("height=" + height);
+//            System.out.println("width=" + width);
+//            System.out.println("height=" + height);
             ImageIO.write(image, "PNG", new File(filename));
 /*
             //压缩计算
@@ -66,7 +70,9 @@ public class Pdf2Image {
                     new FilteredImageSource(image1.getSource(), cropFilter));*/
         }
         doc.close();
-
         System.out.println("pdf2image success");
+
+        long endTime = System.currentTimeMillis();
+        System.out.println("转换时间：" + (endTime - startTime) / 1000 + "s");
     }
 }

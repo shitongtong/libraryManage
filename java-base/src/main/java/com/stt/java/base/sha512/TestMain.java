@@ -85,7 +85,7 @@ public class TestMain {
     @Test
     public void test3() {
         String phone = "13916593205";
-        phone = "18353258038";
+        phone = "18353258038";  //教师
         String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
         System.out.println(password);
         //

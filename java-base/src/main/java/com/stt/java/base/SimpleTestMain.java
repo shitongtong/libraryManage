@@ -232,4 +232,12 @@ public class SimpleTestMain {
         System.out.println(true?1:0);
     }
 
+    @Test
+    public void test2(){
+//        String s = String.valueOf(null);  //报错
+        String s = (String)null;          //不报错
+//        String s = Long.toString(null);
+        System.out.println(s);
+    }
+
 }
