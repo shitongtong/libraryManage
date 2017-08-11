@@ -2,7 +2,7 @@ package com.stt.document2image.office2pdf;
 
 import com.documents4j.api.DocumentType;
 import com.documents4j.api.IConverter;
-import com.documents4j.job.LocalConverter;
+import com.documents4j.job.RemoteConverter;
 import com.google.common.io.Files;
 
 import java.io.File;
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * Created by shitongtong on 2017/8/4.
  */
-public class Document4j2Pdf {
+public class Document4j2Pdf2 {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
@@ -30,18 +30,19 @@ public class Document4j2Pdf {
         File baseFolder = Files.createTempDir();
         System.out.println("baseFolder="+baseFolder);
         System.out.println("baseFolderPath="+baseFolder.getAbsolutePath());
-        IConverter converter =LocalConverter.builder()
+        IConverter converter = RemoteConverter.builder()
                 .baseFolder(baseFolder)
-                .workerPool(20, 25, 2, TimeUnit.SECONDS)
-                .processTimeout(5, TimeUnit.SECONDS)
-                .build();
+        .workerPool(20, 25, 2, TimeUnit.SECONDS)
+                .requestTimeout(10, TimeUnit.SECONDS)
+                .baseUri("http://localhost:8080")
+        .build();
         /*Future<Boolean> conversion = converter
                 .convert(wordFile).as(DocumentType.DOC)
                 .to(target).as(DocumentType.PDF)
                 .prioritizeWith(1000) // optional
                 .schedule();*/
         boolean conversion = converter
-                .convert(wordFile).as(DocumentType.MS_WORD)
+                .convert(wordFile).as(DocumentType.DOC)
                 .to(target).as(DocumentType.PDF)
                 .execute();
         System.out.println(conversion);

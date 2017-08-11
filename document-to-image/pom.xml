@@ -9,6 +9,16 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+
+        <!-- jacob office2pdf2image -->
+        <dependency>
+            <groupId>jacob</groupId>
+            <artifactId>jacob</artifactId>
+            <version>1.11.1</version>
+            <scope>system</scope>
+            <systemPath>D:/testoffice2pdf/jacob_1.11.1/jacob.jar</systemPath>
+        </dependency>
+
         <!--  documents4j:office2pdf -->
         <dependency>
             <groupId>com.documents4j</groupId>
@@ -22,6 +32,11 @@
         </dependency>
         <dependency>
             <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-transformer</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.documents4j</groupId>
             <artifactId>documents4j-transformer-api</artifactId>
             <version>1.0.3</version>
         </dependency>
@@ -30,6 +45,57 @@
             <artifactId>documents4j-transformer-msoffice-word</artifactId>
             <version>1.0.3</version>
         </dependency>
+        <!--<dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-transformer-msoffice</artifactId>
+            <version>1.0.3</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-aggregation</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-util-all</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-util-conversion</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-util-ws</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-util-standalone</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-util-transformer-process</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-transformer-msoffice-base</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-client</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.documents4j</groupId>
+            <artifactId>documents4j-server</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -167,5 +233,21 @@
         </dependency>
 
     </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

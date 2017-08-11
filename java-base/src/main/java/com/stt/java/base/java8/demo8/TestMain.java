@@ -107,7 +107,8 @@ public class TestMain {
      */
     @Test
     public void testOptional() {
-        Optional<String> optional = Optional.of(null);//bam    ""   null(异常)
+        String s1 = null;
+        Optional<String> optional = Optional.of(s1);//bam    ""   null(异常)
         boolean present = optional.isPresent();
         System.out.println(present);//true  ture
         String str = optional.get();

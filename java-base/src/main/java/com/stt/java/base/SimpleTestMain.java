@@ -12,8 +12,12 @@ import java.math.BigDecimal;
 import java.net.InetAddress;
 import java.net.URLEncoder;
 import java.net.UnknownHostException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
@@ -238,6 +242,17 @@ public class SimpleTestMain {
         String s = (String)null;          //不报错
 //        String s = Long.toString(null);
         System.out.println(s);
+    }
+
+    @Test
+    public void testTime2() throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        String time1 = "07:00";
+        String time2 = "08:00";
+        Date date1 = dateFormat.parse(time1);
+        Date date2 = dateFormat.parse(time2);
+        long time = date2.getTime() - date1.getTime();
+        System.out.println(time/1000);  //3600
     }
 
 }
