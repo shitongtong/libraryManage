@@ -14,8 +14,8 @@ public class GenerateDubboSetting {
         System.out.println();
         generateRestSetting();
     }
-
-    static String dirPath = "D:\\project_git\\onlyhi-crm\\onlyhi\\onlyhi-service\\src\\main\\java\\cn\\onlyhi\\service";
+    //service模块下
+    static String dirPath = "D:\\project_git\\onlyhi-crm\\onlyhi-client\\client-service\\src\\main\\java\\cn\\onlyhi\\client\\service";
 
     public static void generateServiceSetting(){
 

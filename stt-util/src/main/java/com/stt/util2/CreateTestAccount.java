@@ -126,7 +126,7 @@ public class CreateTestAccount {
             CpCourseOrder courseOrder = courseOrderList.get(i);
 
             CpCourse course = new CpCourse();
-            course.setUuid(UUIDUtil.randomUUID());
+            course.setUuid(UUIDUtil.randomUUID2());
             course.setCourseOrderUuid(courseOrder.getUuid());
             course.setLeadsUuid(leads.getUuid());
             course.setCourseType(false);
@@ -150,7 +150,7 @@ public class CreateTestAccount {
             Leads leads = leadsList.get(i);
             TcTeacher teacher = teacherList.get(i);
             CpCourseOrder courseOrder = new CpCourseOrder();
-            courseOrder.setUuid(UUIDUtil.randomUUID());
+            courseOrder.setUuid(UUIDUtil.randomUUID2());
             courseOrder.setUserUuid("ADE4B65A-4476-45A2-81AA-5862154A0930");
             courseOrder.setLeadsUuid(leads.getUuid());
             courseOrder.setTeacherName(teacher.getTcName());
@@ -176,7 +176,7 @@ public class CreateTestAccount {
             }
 
             TcTeacher teacher = new TcTeacher();
-            teacher.setUuid(UUIDUtil.randomUUID());
+            teacher.setUuid(UUIDUtil.randomUUID2());
             teacher.setTcName("老师测试账号" + (i + 1));
             String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
             teacher.setPassword(password);
@@ -219,7 +219,7 @@ public class CreateTestAccount {
             }
 
             Leads leads = new Leads();
-            leads.setUuid(UUIDUtil.randomUUID());
+            leads.setUuid(UUIDUtil.randomUUID2());
             leads.setStuNo(phone);
             leads.setName("学生测试账号" + (i + 1));
             String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");

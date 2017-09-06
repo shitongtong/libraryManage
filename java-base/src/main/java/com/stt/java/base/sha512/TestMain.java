@@ -85,10 +85,10 @@ public class TestMain {
     @Test
     public void test3() {
         String phone = "13916593205";
-        phone = "18353258038";  //教师
+//        phone = "18353258038";  //教师
         String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
         System.out.println(password);
-        //
+        //47108679cdf08cc75a483db1019adada5c127e4518e94445b02cc8be2f55d6da3d3091f65e9272484c7c3aabc9cdfb3bead8b07283196796ae207390fed9241d
         //a4bda9cd5a0d4de101022096f564774dd4912240d7afeb947817da7afbfb63308e4b2cb0477876392f0ab778282202bf931ca5694ca9aab95909f3f4967f3f5e
         long timestamp = 5454654564L;
         String realPwd = SecurityUtil.hashSha512Hex(password + timestamp);

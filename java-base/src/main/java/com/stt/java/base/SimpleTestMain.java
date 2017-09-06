@@ -33,7 +33,7 @@ public class SimpleTestMain {
 
     public static void main(String[] args) {
         String coursewarePath = "D:\\project_git\\onlyhi-admin\\target\\courseware\\20170324\\C48D14A4-FE09-44C2-99D6-17BF42262204\\original\\1490326152793_test4.docx";
-        String baseUrl = coursewarePath.substring(0,coursewarePath.indexOf("courseware"));
+        String baseUrl = coursewarePath.substring(0, coursewarePath.indexOf("courseware"));
         String courseware = coursewarePath.substring(coursewarePath.indexOf("courseware"));
         System.out.println(baseUrl);
         System.out.println(courseware);
@@ -41,9 +41,9 @@ public class SimpleTestMain {
     }
 
     @org.junit.Test
-    public void getEnv(){
+    public void getEnv() {
         Map<String, String> map = System.getenv();
-        for(Iterator<String> itr = map.keySet().iterator(); itr.hasNext();){
+        for (Iterator<String> itr = map.keySet().iterator(); itr.hasNext(); ) {
             String key = itr.next();
             System.out.println(key + "=" + map.get(key));
         }
@@ -69,15 +69,15 @@ public class SimpleTestMain {
         Properties envVars = new Properties();
         Runtime r = Runtime.getRuntime();
         String OS = System.getProperty("os.name").toLowerCase();
-         System.out.println(OS);
+        System.out.println(OS);
         if (OS.indexOf("windows 9") > -1) {
             p = r.exec("command.com /c set");
         } else if ((OS.indexOf("nt") > -1) || (OS.indexOf("windows 20") > -1) || (OS.indexOf("windows xp") > -1)) {
             // thanks to JuanFran for the xp fix!
             p = r.exec("cmd.exe /c set");
-        } else if (OS.indexOf("windows 7") > -1){
+        } else if (OS.indexOf("windows 7") > -1) {
             p = r.exec("cmd.exe /c set");
-        }else {
+        } else {
             // our last hope, we assume Unix (thanks to H. Ware for the fix)
             p = r.exec("env");
         }
@@ -95,7 +95,7 @@ public class SimpleTestMain {
     }
 
     @org.junit.Test
-    public void getUUID(){
+    public void getUUID() {
         UUID uuid = UUID.randomUUID();
         System.out.println(uuid);
         //c8abbd07-429a-44fb-b8a4-66baacfd1c0f
@@ -103,42 +103,42 @@ public class SimpleTestMain {
     }
 
     @Test
-    public void testRandom(){
+    public void testRandom() {
         long time1 = System.nanoTime();
         int v = (int) ((Math.random() * 9 + 1) * 1000);
-        String s1 = v+"";
+        String s1 = v + "";
         long time2 = System.nanoTime();
-        System.out.println(time2-time1);
+        System.out.println(time2 - time1);
 
         System.out.println("================================");
 
         long time3 = System.nanoTime();
         String sixRandom = getSixRandom();
         long time4 = System.nanoTime();
-        System.out.println(time4-time3);
+        System.out.println(time4 - time3);
 
-        System.out.println(s1+"||||||"+sixRandom);
+        System.out.println(s1 + "||||||" + sixRandom);
 
     }
 
     private int count = 0;
 
-    public String getSixRandom(){
+    public String getSixRandom() {
         count++;
-        Random rad=new Random();
-        String result  = rad.nextInt(10000) +"";
-        if(result.length()!=4){
+        Random rad = new Random();
+        String result = rad.nextInt(10000) + "";
+        if (result.length() != 4) {
             return getSixRandom();
         }
-        System.out.println("count=="+count);
+        System.out.println("count==" + count);
         return result;
     }
 
     @Test
-    public void testArray(){
+    public void testArray() {
         String courseKnowledgeIds = "1,2,3";
         String[] split = courseKnowledgeIds.split(",");
-        String s = split[split.length-1];
+        String s = split[split.length - 1];
         System.out.println(s);
     }
 
@@ -164,7 +164,7 @@ public class SimpleTestMain {
     }
 
     @Test
-    public void testHash(){
+    public void testHash() {
         String str = "Java基础PPT";
         str = "dsd_";
         int i = str.hashCode();
@@ -175,7 +175,7 @@ public class SimpleTestMain {
     }
 
     @Test
-    public void testTime(){
+    public void testTime() {
         long timeInMillis = Calendar.getInstance().getTimeInMillis();
         long l = System.currentTimeMillis();
         System.out.println(timeInMillis);
@@ -186,7 +186,7 @@ public class SimpleTestMain {
     }
 
     @Test
-    public void testSplit(){
+    public void testSplit() {
         String s = "aaa";
         String[] split = s.split(",");
         System.out.println(Arrays.asList(split).size());
@@ -195,34 +195,34 @@ public class SimpleTestMain {
     }
 
     @Test
-    public void testIntEquest(){
+    public void testIntEquest() {
         int a = -1;
-        System.out.println(a==-1);
+        System.out.println(a == -1);
     }
 
     @Test
-    public void test(){
+    public void test() {
         double i = 6.00 / 60;
         System.out.println(i);
         double b = 3d;
         BigDecimal bigDecimal = new BigDecimal(b / 60);
-        double doubleValue = bigDecimal.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+        double doubleValue = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
         System.out.println(doubleValue);
     }
 
     @Test
-    public void testCard(){
+    public void testCard() {
 //        IDValidator
     }
 
     @Test
-    public void test11(){
+    public void test11() {
         String password = SecurityUtil.hashMD5Hex("");
         System.out.println(password);
     }
 
     @Test
-    public void testI(){
+    public void testI() {
         int maxValue = Integer.MAX_VALUE;
         System.out.println(maxValue);//2147483647
         long value = Long.MAX_VALUE;
@@ -230,16 +230,16 @@ public class SimpleTestMain {
     }
 
     @Test
-    public void test1(){
+    public void test1() {
         int amount = 12791;
-        System.out.println(String.valueOf(amount/100d));
-        System.out.println(true?1:0);
+        System.out.println(String.valueOf(amount / 100d));
+        System.out.println(true ? 1 : 0);
     }
 
     @Test
-    public void test2(){
+    public void test2() {
 //        String s = String.valueOf(null);  //报错
-        String s = (String)null;          //不报错
+        String s = (String) null;          //不报错
 //        String s = Long.toString(null);
         System.out.println(s);
     }
@@ -252,7 +252,19 @@ public class SimpleTestMain {
         Date date1 = dateFormat.parse(time1);
         Date date2 = dateFormat.parse(time2);
         long time = date2.getTime() - date1.getTime();
-        System.out.println(time/1000);  //3600
+        System.out.println(time / 1000);  //3600
+    }
+
+
+    @Test
+    public void testCount() {
+        long l = System.nanoTime();
+        int sum = 0;
+        for (int i = 1; i <= 10000; i++) {
+            sum += i;
+        }
+        System.out.println(sum);
+        System.out.println("执行时间：" + (System.nanoTime() - l));  //502017
     }
 
 }

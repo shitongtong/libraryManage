@@ -12,10 +12,10 @@ public class SimpleTest {
 
     @Test
     public void testPassword(){
-        String USERNAME = "zhangsan";
-        String PASSWORD = "123";
+        String USERNAME = "admin";
+        String PASSWORD = "admin";
         String passwd = new SimpleHash("SHA-1", USERNAME, PASSWORD).toString();	//密码加密
-        System.out.println(passwd);
+        System.out.println(passwd);//dd94709528bb1c83d08f3088d4043f4742891f4f
 
     }
 }
