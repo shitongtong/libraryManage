@@ -15,10 +15,12 @@ import java.net.UnknownHostException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
@@ -265,6 +267,28 @@ public class SimpleTestMain {
         }
         System.out.println(sum);
         System.out.println("执行时间：" + (System.nanoTime() - l));  //502017
+    }
+
+    @Test
+    public void testTime3() throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date courseStartTime = dateFormat.parse("2017-09-07 16:30:00");
+        long time = courseStartTime.getTime();
+        Calendar calendar = Calendar.getInstance();
+        long begin = calendar.getTimeInMillis();
+
+        long intervalTime = (time - begin) / (1000 * 60);
+        System.out.println(intervalTime);
+    }
+
+    @Test
+    public void testList(){
+        List<String> androidPushlist = new ArrayList<>();
+        List<String> iosPushlist = new ArrayList<>();
+        List<String> pushLeadsUuidList = new ArrayList<>();
+        pushLeadsUuidList.addAll(androidPushlist);
+        pushLeadsUuidList.addAll(iosPushlist);
+        System.out.println(pushLeadsUuidList);
     }
 
 }

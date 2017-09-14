@@ -122,8 +122,8 @@ public class CreateTestAccount2 {
             course.setLeadsUuid(leads.getUuid());
             course.setCourseType(false);
             course.setLength("1");
-            course.setCourseDate("2017-08-16");
-            course.setStartTime("00:30");
+            course.setCourseDate("2017-09-07");
+            course.setStartTime("01:30");
             course.setEndTime("23:30");
             course.setTeacherUuid(teacher.getUuid());
 
@@ -165,10 +165,10 @@ public class CreateTestAccount2 {
             } else {
                 phone = phoneTemp + i;
             }
-
+            phone = "18830000000";
             TcTeacher teacher = new TcTeacher();
             teacher.setUuid(UUIDUtil.randomUUID2());
-            teacher.setTcName("李武");
+            teacher.setTcName("tt");
             String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
             teacher.setPassword(password);
             teacher.setPhone(phone);
@@ -208,11 +208,11 @@ public class CreateTestAccount2 {
             } else {
                 phone = phoneTemp + i;
             }
-
+            phone = "13916593205";
             Leads leads = new Leads();
             leads.setUuid(UUIDUtil.randomUUID2());
             leads.setStuNo(phone);
-            leads.setName("李冠宇");
+            leads.setName("stt");
             String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
             leads.setPassword(password);
             leads.setPhone(phone);

@@ -75,7 +75,7 @@ public class CreateTestAccount {
 
         //创建订单列表
         List<CpCourseOrder> courseOrderList = createrCpCourseOrder(leadsList, teacherList);
-        String sql4 = "insert into cp_course_order(uuid,leads_uuid,user_uuid,teacher_name,teacher_phone,type,length,subject) values(?,?,?,?,?,?,?,?)";
+        String sql4 = "insert into cp_course_order(uuid,leads_uuid,user_uuid,teacher_name,teacher_phone,type,length,subject,grade) values(?,?,?,?,?,?,?,?,?)";
         for (CpCourseOrder courseOrder : courseOrderList) {
             PreparedStatement preparedStatement = conn.prepareStatement(sql4);
             preparedStatement.setString(1, courseOrder.getUuid());
@@ -86,6 +86,7 @@ public class CreateTestAccount {
             preparedStatement.setByte(6, courseOrder.getType());
             preparedStatement.setBigDecimal(7, courseOrder.getLength());
             preparedStatement.setString(8, courseOrder.getSubject());
+            preparedStatement.setString(9, courseOrder.getGrade());
             preparedStatement.executeUpdate();
             preparedStatement.close();
         }
@@ -131,8 +132,8 @@ public class CreateTestAccount {
             course.setLeadsUuid(leads.getUuid());
             course.setCourseType(false);
             course.setLength("1");
-            course.setCourseDate("2017-06-27");
-            course.setStartTime("00:30");
+            course.setCourseDate("2017-09-11");
+            course.setStartTime("01:30");
             course.setEndTime("23:30");
             course.setTeacherUuid(teacher.getUuid());
 
@@ -158,6 +159,7 @@ public class CreateTestAccount {
             courseOrder.setType(Byte.valueOf("0"));
             courseOrder.setLength(new BigDecimal(1));
             courseOrder.setSubject(subjects[new Random().nextInt(10)]);
+            courseOrder.setGrade("小三");
             courseOrderList.add(courseOrder);
         }
         return courseOrderList;
@@ -177,7 +179,7 @@ public class CreateTestAccount {
 
             TcTeacher teacher = new TcTeacher();
             teacher.setUuid(UUIDUtil.randomUUID2());
-            teacher.setTcName("老师测试账号" + (i + 1));
+            teacher.setTcName("老师测试账号" + i);
             String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
             teacher.setPassword(password);
             teacher.setPhone(phone);
@@ -221,7 +223,7 @@ public class CreateTestAccount {
             Leads leads = new Leads();
             leads.setUuid(UUIDUtil.randomUUID2());
             leads.setStuNo(phone);
-            leads.setName("学生测试账号" + (i + 1));
+            leads.setName("学生测试账号" + i);
             String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
             leads.setPassword(password);
             leads.setPhone(phone);

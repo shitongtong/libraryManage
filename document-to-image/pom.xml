@@ -10,6 +10,12 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>0.4.8</version>
+        </dependency>
+
         <!-- jacob office2pdf2image -->
         <dependency>
             <groupId>jacob</groupId>

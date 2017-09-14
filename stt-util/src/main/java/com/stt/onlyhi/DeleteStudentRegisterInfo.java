@@ -33,7 +33,7 @@ public class DeleteStudentRegisterInfo {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DeleteStudentRegisterInfo.class);
 
-    private static final String phone = "13052509803";
+    private static final String phone = "13916593205";
 
     public static void main(String[] args) {
 
