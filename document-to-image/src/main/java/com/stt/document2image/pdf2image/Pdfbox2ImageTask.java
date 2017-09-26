@@ -75,6 +75,7 @@ public class Pdfbox2ImageTask extends RecursiveAction {
 
         String filePath = "D:\\testoffice2pdf\\courseware\\pdf\\Java基础PPT.pdf";
         filePath = "D:\\testoffice2pdf\\courseware\\pdf\\第3章第1节　钠及其重要化合物.pdf";
+        filePath = "D:\\testoffice2pdf\\courseware\\pdf\\高三英语秋季精品课4.pdf";
 
         File file = new File(filePath);
         String fileNameNoSuffix = file.getName().substring(0, file.getName().indexOf("."));

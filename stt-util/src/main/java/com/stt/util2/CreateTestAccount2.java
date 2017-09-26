@@ -122,7 +122,7 @@ public class CreateTestAccount2 {
             course.setLeadsUuid(leads.getUuid());
             course.setCourseType(false);
             course.setLength("1");
-            course.setCourseDate("2017-09-07");
+            course.setCourseDate("2017-09-25");
             course.setStartTime("01:30");
             course.setEndTime("23:30");
             course.setTeacherUuid(teacher.getUuid());

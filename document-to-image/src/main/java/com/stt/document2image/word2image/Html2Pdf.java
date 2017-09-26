@@ -29,7 +29,7 @@ public class Html2Pdf {
         fontResolver.addFont("C:/Windows/Fonts/simsunb.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
         //解决图片的相对路径问题
 //        renderer.getSharedContext().setBaseURL("file:/D:/test");
-        renderer.layout();
+//        renderer.layout();
         renderer.createPDF(os);
         os.flush();
         os.close();
@@ -40,7 +40,7 @@ public class Html2Pdf {
     public static void main(String[] args) {
         Html2Pdf html2Pdf = new Html2Pdf();
         try {
-            html2Pdf.convertHtmlToPdf("D:\\document2image\\注意事项.html", "D:\\document2image\\注意事项.pdf");
+            html2Pdf.convertHtmlToPdf("D:\\document2image\\服务条款.html", "D:\\document2image\\服务条款.pdf");
         } catch (Exception e) {
             e.printStackTrace();
         }
