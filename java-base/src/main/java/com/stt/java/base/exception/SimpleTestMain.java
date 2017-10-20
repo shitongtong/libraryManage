@@ -1,5 +1,7 @@
 package com.stt.java.base.exception;
 
+import org.junit.Test;
+
 /**
  * @Author shitongtong
  * <p>
@@ -18,6 +20,21 @@ public class SimpleTestMain {
             System.out.println("===" + e.toString() + "===");
             System.out.println("===" + e.getCause() + "===");
             System.out.println("===" + e.getLocalizedMessage() + "===");
+        }
+    }
+
+    @Test
+    public void test1(){
+        System.out.println(returnTest());
+    }
+
+    public static int returnTest(){
+        try {
+            return 1;
+        }catch (Exception e){
+            return 2;
+        }finally {
+            return 3;
         }
     }
 }

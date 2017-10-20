@@ -87,17 +87,20 @@ public class TestMain {
         String phone = "13916593205";
 //        phone = "18353258038";  //教师
         phone = "18840000010";  //教师
+        phone = "18830000000";
         String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
         System.out.println(password);
         //47108679cdf08cc75a483db1019adada5c127e4518e94445b02cc8be2f55d6da3d3091f65e9272484c7c3aabc9cdfb3bead8b07283196796ae207390fed9241d
         //a4bda9cd5a0d4de101022096f564774dd4912240d7afeb947817da7afbfb63308e4b2cb0477876392f0ab778282202bf931ca5694ca9aab95909f3f4967f3f5e
         //dd09265420991e9a7f786c3cfae5fa579c9a5cc8187a24e4bc38a9be53eb2488ff2f9d84c716bbc4565d726f993eac008e332f276b50150624aff5b7c6c3e22d
+        //1bf5417d18190caa5b7917c5444c23d09d8619e4f2d3cd855ebb95b659b6952385e2c99e24c58869806896fe17910ee2525b577cd4db2f2f27c46c44096ea5b0
         long timestamp = 5454654564L;
         String realPwd = SecurityUtil.hashSha512Hex(password + timestamp);
         System.out.println(realPwd);
         //4074406d96c086055a86b9cd3975d8d28e81d1258412c1972e1fbfb0b8e19d79fa855d13056141cda601e8542860f095b4574163ea5b0ef2b290479e33c801bb
         //5fcf80d36238d5d22ab56ffcfeb2aeafb5064d94aa699a958e25f8bfa6a7c3f15de6bf876834456a9a216fde19ff43afb5cb9e1dc2924768b9e3dc7b26ed6488
         //7cfa2d57d13fd1a0f55810c4e3930b462b9315fd277517ba1d5808a7366b8e2b245a5ca70a4ff99869c1d5397495ca0d388f03577b901e686901c9c8a73c5abe
+        //2f02bba697dfca334684f720df611b9a321f0076cede3912b236f20b524745fb2a6802692e77aaba6ef39b0f3ff9245da2c4d1e59ec7b622badbc005e0aee5c7
     }
 
     @Test
@@ -113,13 +116,14 @@ public class TestMain {
 
     @Test
     public void test4(){
-        String phone = "13916593205";
-        String password = SecurityUtil.hashSha512Hex(phone + "&" + "stt_2017" + ":onlyhi");
+        String phone = "18940000010";
+        String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
         System.out.println(password);
-        /*
+        //4f4422c4ee71d91c247bfa4d7d73a508f5115ec48e4f6357c05e8aee05202158c9914930cf053561144401954f9aaf6e82aec1169fb5ba4252946e243943d11c
         long timestamp = 5454654564L;
         String realPwd = SecurityUtil.hashSha512Hex(password + timestamp);
-        System.out.println(realPwd);*/
+        System.out.println(realPwd);
+        //ff86ead6bbecb1abf591c0418a35aa0ba948bc578edea8b58e07d9ba9a16ad3e670e9bad2f2a8681bb4331e26d47187baecd43b709e6bb750a73667d2328fa10
     }
 
     @Test

@@ -282,13 +282,30 @@ public class SimpleTestMain {
     }
 
     @Test
-    public void testList(){
+    public void testList() {
         List<String> androidPushlist = new ArrayList<>();
         List<String> iosPushlist = new ArrayList<>();
         List<String> pushLeadsUuidList = new ArrayList<>();
         pushLeadsUuidList.addAll(androidPushlist);
         pushLeadsUuidList.addAll(iosPushlist);
         System.out.println(pushLeadsUuidList);
+    }
+
+    @Test
+    public void test4() {
+        double a = 101112.0;
+        BigDecimal a2 = new BigDecimal(Double.toString(a));
+        BigDecimal b2 = new BigDecimal("100");
+        BigDecimal multiply = a2.multiply(b2);
+        double v = multiply.doubleValue();
+        System.out.println(v);
+        System.out.println(multiply.toString());
+        System.out.println(String.valueOf(a*100));
+        System.out.println(Double.toString(a*100));
+        System.out.println(new BigDecimal(a*100).setScale(2, BigDecimal.ROUND_HALF_UP).toString());
+
+        String money = "101112.0";
+        System.out.println(new BigDecimal(Double.valueOf(money) * 100).setScale(2, BigDecimal.ROUND_HALF_UP).toString());
     }
 
 }

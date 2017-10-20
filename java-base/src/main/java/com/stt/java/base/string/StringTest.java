@@ -12,7 +12,7 @@ public class StringTest {
         String result = "";
         result += "ok";
 
-        String a = "ab"+"cd"+"ef";
+        String a = "ab" + "cd" + "ef";
     }
 
     /**
@@ -22,16 +22,26 @@ public class StringTest {
      * concat能做的+也能做，还需要concat做什么，还有其他区别吗？？
      */
     @Test
-    public void testConcat(){
+    public void testConcat() {
         String str1 = "asd";
         String str2 = "asdqwe";
         String str3 = str1.concat("qwe");
-        String str4 = "asd"+"qwe";
+        String str4 = "asd" + "qwe";
         String str5 = str1 + "qwe";
 
-        System.out.println(str2==str3);//false
-        System.out.println(str2==str4);//true
-        System.out.println(str2==str5);//false
+        System.out.println(str2 == str3);//false
+        System.out.println(str2 == str4);//true
+        System.out.println(str2 == str5);//false
+    }
+
+    @Test
+    public void testException() {
+        String s = "a";
+        while (true) {
+            String s1 = "s1";
+            s = s + s1;
+        }
+//        System.out.println(s);
     }
 
 }

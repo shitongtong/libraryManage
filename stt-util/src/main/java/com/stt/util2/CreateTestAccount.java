@@ -132,7 +132,7 @@ public class CreateTestAccount {
             course.setLeadsUuid(leads.getUuid());
             course.setCourseType(false);
             course.setLength("1");
-            course.setCourseDate("2017-09-11");
+            course.setCourseDate("2017-10-13");
             course.setStartTime("01:30");
             course.setEndTime("23:30");
             course.setTeacherUuid(teacher.getUuid());
@@ -176,6 +176,8 @@ public class CreateTestAccount {
             } else {
                 phone = phoneTemp + i;
             }
+            //创建尾数为50 - 99五十个账号
+            phone = phoneTemp + (i + 50);
 
             TcTeacher teacher = new TcTeacher();
             teacher.setUuid(UUIDUtil.randomUUID2());
@@ -219,6 +221,8 @@ public class CreateTestAccount {
             } else {
                 phone = phoneTemp + i;
             }
+            //创建尾数为50 - 99五十个账号
+            phone = phoneTemp + (i + 50);
 
             Leads leads = new Leads();
             leads.setUuid(UUIDUtil.randomUUID2());
