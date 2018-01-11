@@ -10,11 +10,11 @@ import java.sql.SQLException;
  * <p>
  * Created by shitongtong on 2017/6/29.
  */
-public class updateTeacherPassword {
+public class UpdateTeacherPassword {
 
     public static void main(String[] args) throws SQLException {
         Connection conn = DBPool.getInstance().getDruidConnection();
-        String sql = "select uuid, phone from tc_teacher";
+        String sql = "select uuid, phone from tc_teacher where phone like '1880000009%'";
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -24,7 +24,9 @@ public class updateTeacherPassword {
         String phone;
         String password;
         PreparedStatement statement;
+        int total = 0;
         while (resultSet.next()) {
+            total++;
             uuid = resultSet.getString(1);
             phone = resultSet.getString(2);
             password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
@@ -34,6 +36,7 @@ public class updateTeacherPassword {
             statement.executeUpdate();
             statement.close();
         }
+        System.out.println("total="+total);
         resultSet.close();
         preparedStatement.close();
         conn.close();

@@ -3,7 +3,11 @@ package com.stt.util;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.Tuple;
 import redis.clients.util.SafeEncoder;
+
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @Author shitongtong
@@ -14,17 +18,17 @@ public class RedisDao {
 
     private JedisPool jedisPool;
 
-    public RedisDao(){
+    public RedisDao() {
         if (jedisPool == null) {
             JedisPoolConfig config = new JedisPoolConfig();
 //            config.setMaxActive(JRedisPoolConfig.MAX_ACTIVE);
             config.setMaxTotal(100);
             config.setMaxIdle(300);
 //            config.setMaxWait(JRedisPoolConfig.MAX_WAIT);
-            config.setMaxWaitMillis(100*1000);
+            config.setMaxWaitMillis(100 * 1000);
             config.setTestOnBorrow(true);
 //            config.setTestOnReturn(true);
-            jedisPool = new JedisPool(config, "192.168.1.250", 6379,2000,"",5);//内测环境
+            jedisPool = new JedisPool(config, "192.168.3.250", 6379, 2000, null, 5);//内测环境
 //            jedisPool = new JedisPool(config, "106.14.46.51", 6300,2000,"onlyhi.cn",5);//公网测试换
         }
     }
@@ -132,7 +136,8 @@ public class RedisDao {
 
     /**
      * 添加记录,如果记录已存在将覆盖原有的value
-     *  默认过期时间7天
+     * 默认过期时间7天
+     *
      * @param key
      * @param value
      * @return 状态码
@@ -214,7 +219,7 @@ public class RedisDao {
      *
      * @param keys
      * @return 删除的记录数
-     * */
+     */
     public long del(String... keys) {
         Jedis jedis = getJedis();
         long count = jedis.del(keys);
@@ -222,4 +227,117 @@ public class RedisDao {
         return count;
     }
 
+    /**
+     * 添加一个或多个成员到有序集合，或者如果它已经存在更新其分数
+     *
+     * @param key
+     * @param scoreMembers
+     * @return 被成功添加的新成员的数量，不包括那些被更新的、已经存在的成员。
+     */
+    public long zadd(String key, Map<String, Double> scoreMembers) {
+        Jedis jedis = getJedis();
+        Long count = jedis.zadd(key, scoreMembers);
+        returnJedis(jedis);
+        return count;
+    }
+
+    /**
+     * 添加一个或多个成员到有序集合，或者如果它已经存在更新其分数
+     *
+     * @param key
+     * @param score
+     * @param members
+     * @return 被成功添加的新成员的数量，不包括那些被更新的、已经存在的成员。
+     */
+    public long zadd(String key, double score, String members) {
+        Jedis jedis = getJedis();
+        Long count = jedis.zadd(key, score, members);
+        returnJedis(jedis);
+        return count;
+    }
+
+    /**
+     * 根据key和集合成员返回其索引值，若其不存在则返回null
+     *
+     * @param key
+     * @param members
+     * @return
+     */
+    public Long zrank(String key, String members) {
+        Jedis jedis = getJedis();
+        Long zrank = jedis.zrank(key, members);
+        returnJedis(jedis);
+        return zrank;
+    }
+
+    /**
+     * key的集合数量
+     *
+     * @param key
+     * @return
+     */
+    public Long zcard(String key) {
+        Jedis jedis = getJedis();
+        Long zrank = jedis.zcard(key);
+        returnJedis(jedis);
+        return zrank;
+    }
+
+    /**
+     * 根据key和member增加分数score，若元素不存在则创建并返回新的分数
+     *
+     * @param key
+     * @param score
+     * @param member
+     * @return
+     */
+    public Double zincrby(String key, double score, String member) {
+        Jedis jedis = getJedis();
+        Double zincrby = jedis.zincrby(key, score, member);
+        returnJedis(jedis);
+        return zincrby;
+    }
+
+    /**
+     * 根据key和索引值查询成员集合
+     *
+     * @param key
+     * @param start
+     * @param end
+     * @return
+     */
+    public Set<String> zrange(String key, long start, long end) {
+        Jedis jedis = getJedis();
+        Set<String> zrevrange = jedis.zrange(key, start, end);
+        returnJedis(jedis);
+        return zrevrange;
+    }
+
+    /**
+     * 根据key和索引值查询成员集合(包括分数)
+     *
+     * @param key
+     * @param start
+     * @param end
+     * @return
+     */
+    public Set<Tuple> zrangeWithScores(String key, long start, long end) {
+        Jedis jedis = getJedis();
+        Set<Tuple> tupleSet = jedis.zrangeWithScores(key, start, end);
+        returnJedis(jedis);
+        return tupleSet;
+    }
+
+    /**
+     * 删除指定成员，返回删除的数量
+     * @param key
+     * @param members
+     * @return
+     */
+    public long zrem(String key, String... members) {
+        Jedis jedis = getJedis();
+        Long zrem = jedis.zrem(key, members);
+        returnJedis(jedis);
+        return zrem;
+    }
 }

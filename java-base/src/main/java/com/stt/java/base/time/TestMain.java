@@ -1,5 +1,7 @@
 package com.stt.java.base.time;
 
+import org.junit.Test;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -17,5 +19,22 @@ public class TestMain {
         System.out.println(timeInMillis);
         System.out.println(time);
         System.out.println(currentTimeMillis);
+    }
+
+    @Test
+    public void test1(){
+        System.out.println(getNextYearDate(0));
+        System.out.println(new Date());
+    }
+
+    public static Date getNextYearDate(int num){
+        Calendar calendar = Calendar.getInstance();
+        Date date = new Date(System.currentTimeMillis());
+        calendar.setTime(date);
+//	        calendar.add(Calendar.WEEK_OF_YEAR, -1);
+        calendar.add(Calendar.YEAR, num);
+        date = calendar.getTime();
+        System.out.println(date);
+        return date;
     }
 }

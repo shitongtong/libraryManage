@@ -121,7 +121,7 @@ public class CreateTestAccount {
     //创建课程
     public static List<CpCourse> createrCpCourse(List<Leads> leadsList, List<TcTeacher> teacherList, List<CpCourseOrder> courseOrderList) {
         List<CpCourse> courseList = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 100; i++) {
             Leads leads = leadsList.get(i);
             TcTeacher teacher = teacherList.get(i);
             CpCourseOrder courseOrder = courseOrderList.get(i);
@@ -132,7 +132,7 @@ public class CreateTestAccount {
             course.setLeadsUuid(leads.getUuid());
             course.setCourseType(false);
             course.setLength("1");
-            course.setCourseDate("2017-10-13");
+            course.setCourseDate("2017-11-17");
             course.setStartTime("01:30");
             course.setEndTime("23:30");
             course.setTeacherUuid(teacher.getUuid());
@@ -170,14 +170,14 @@ public class CreateTestAccount {
         List<TcTeacher> teacherList = new ArrayList<>();
         String phoneTemp = "188000000";
         String phone = "";
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 100; i++) {
             if (i < 10) {
                 phone = phoneTemp + "0" + i;
             } else {
                 phone = phoneTemp + i;
             }
             //创建尾数为50 - 99五十个账号
-            phone = phoneTemp + (i + 50);
+//            phone = phoneTemp + (i + 50);
 
             TcTeacher teacher = new TcTeacher();
             teacher.setUuid(UUIDUtil.randomUUID2());
@@ -215,14 +215,14 @@ public class CreateTestAccount {
         List<Leads> leadsList = new ArrayList<>();
         String phoneTemp = "189000000";
         String phone = "";
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 100; i++) {
             if (i < 10) {
                 phone = phoneTemp + "0" + i;
             } else {
                 phone = phoneTemp + i;
             }
             //创建尾数为50 - 99五十个账号
-            phone = phoneTemp + (i + 50);
+//            phone = phoneTemp + (i + 50);
 
             Leads leads = new Leads();
             leads.setUuid(UUIDUtil.randomUUID2());

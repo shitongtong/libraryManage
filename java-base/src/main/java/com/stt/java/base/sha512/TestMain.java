@@ -115,23 +115,71 @@ public class TestMain {
     }
 
     @Test
-    public void test4(){
+    public void test4() {
         String phone = "18940000010";
+        phone = "18800000000";
+        phone = "18221656604";
         String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
         System.out.println(password);
         //4f4422c4ee71d91c247bfa4d7d73a508f5115ec48e4f6357c05e8aee05202158c9914930cf053561144401954f9aaf6e82aec1169fb5ba4252946e243943d11c
+        //7e95300fc527cf8b6021405379e30d8197745aabe094e8f536ee04c1d52ba29fe0725af550120b0de150bc829480913327b7640a572f56463ad2dc0c285f7477
+        //e9ae32856aac6b332c07c142ccbfc125b597c36943a87d9c461804222c818cdd40e732856da5b83ae72b2b12afc1633fd4f466b53aa21fe9ca911eae782f4bcd
         long timestamp = 5454654564L;
         String realPwd = SecurityUtil.hashSha512Hex(password + timestamp);
         System.out.println(realPwd);
         //ff86ead6bbecb1abf591c0418a35aa0ba948bc578edea8b58e07d9ba9a16ad3e670e9bad2f2a8681bb4331e26d47187baecd43b709e6bb750a73667d2328fa10
+        //37a6f140c32e875705aed9840c926911aa15c488f68cc9f8ab069d569f14d0438107209f56e00fb80d08a91f208e3af323c3ba31250ba201811273f93305daa4
+        //7d0bbfdd1e06447fc4d915dfbf149afe06b54933f6046ec0cf4a778278f832ca2d5fed054c862f24fb90b7b61f36799a5aede2d15b01158b2ad2ef735ad9b484
     }
 
     @Test
-    public void test5(){
+    public void test5() {
         //teacher
         String phone = "18353258038";
-        String password = SecurityUtil.hashSha512Hex(phone+ "&" + "123456" + ":onlyhi");
+        phone = "13916593205";
+        String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
         System.out.println(password);//a4bda9cd5a0d4de101022096f564774dd4912240d7afeb947817da7afbfb63308e4b2cb0477876392f0ab778282202bf931ca5694ca9aab95909f3f4967f3f5e
+    }
+
+    @Test
+    public void test6() {
+        String password = SecurityUtil.hashSha512Hex("123456");
+        System.out.println(password);
+    }
+
+    @Test
+    public void test7(){
+        String phone = "18221593584";
+        phone = "15538132882";
+        phone = "18175136606";
+        phone = "18200153536";
+        phone = "13776625715";
+        String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
+        System.out.println(password);
+//        String password = "aeccbeac21dc6ed6bb6e8a18b649526dfc2d5d0ff35cbea54ab31338eeca5e19095fb783ee5213e62e6ce1c265c23744927be00866502e0952e5d4d10af0a983";
+        long timestamp =  1510811031;
+        String realPwd = SecurityUtil.hashSha512Hex(password + timestamp);
+        System.out.println(realPwd);
+    }
+
+    @Test
+    public void test8(){
+        String loginName = "admin";
+        String password = "!qaz2wsx3edc";
+        loginName = "cctest0";
+        loginName = "renyue";
+        password="123456";
+        String password1 = SecurityUtil.hashSha512Hex(loginName + "&" + password + ":onlyhi");
+        System.out.println(password1);
+        //04f814ab0c87f863f727168b906791448de7a81a26ba5fa27ea408320b7c05525cd0c88318867cc64096566252c43de9fc0bc98d8954a8c32403e147f8f8cda8
+        //5ee8795030e3dcb37929621bad0daf14504a4a0a8362a632922983162193cb7b1cdbe767b7782b3cc8b70692f3a8d4f4a02b30945674ba900dabfadf2af62b1e
+        //924cee02caf01b9d1913924d54b4dffe77029eebde27eec3c467f47594cef8d5491b36158e628b1967770a1a5ac5cbad15e7055f6a639142e41d4b35030a508f
+        long timestamp =  5454654564L;
+        String password2 = SecurityUtil.hashSha512Hex(password1 + timestamp);
+        System.out.println(password2);
+        //45eb94a3ac780f9efd63a7f79ed826804961869a8eae517062e8b3e97bd28eb209c242ce32ee908556f915693ae6bbd657cdb5ad6e713fb571ed19082635e6d0
+        //12379cb453567a1b5bfb9175a1b62a701e274cfb5f91ea3c15d5ff425ffb5b71b97ea132a96da7daf1bcc1d5bd3512b243a5954b4d69cd5e93266e7430ba14b4
+        //eda46cc3009625ef32d9d80b749c06c970ccec253c003223750698e6a8ae2b8459da9b900d54ed5224ba98237adc6428e3c67866001c74e480d1d2e623010deb
     }
 
 }
