@@ -1,6 +1,10 @@
 package com.stt.java.base.collection;
 
+import org.junit.Test;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017-02-21.
@@ -26,6 +30,22 @@ public class TestMain {
         System.out.println(o2);
 
 //        BufferedReader
+    }
+
+    @Test
+    public void testRemoveList(){
+        List<String> list = new ArrayList<>();
+        list.add("hehe");
+        list.add("haha");
+        list.add("rrr");
+//        int size = list.size();
+        for (int i = 0; i < list.size(); i++) {
+            String s = list.get(i);
+            if (s.equals("hehe")){
+                list.remove(i);
+            }
+        }
+        System.out.println(list);
     }
 
 }

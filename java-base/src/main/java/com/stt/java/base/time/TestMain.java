@@ -2,6 +2,9 @@ package com.stt.java.base.time;
 
 import org.junit.Test;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -36,5 +39,13 @@ public class TestMain {
         date = calendar.getTime();
         System.out.println(date);
         return date;
+    }
+
+    @Test
+    public void test2() throws ParseException {
+        String dateStr = "2018-03-55";
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = dateFormat.parse(dateStr);
+        System.out.println(dateFormat.format(date));
     }
 }

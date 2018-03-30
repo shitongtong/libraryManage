@@ -3,6 +3,9 @@ package com.stt.java.base.sha512;
 import com.stt.java.base.util.SecurityUtil;
 import org.junit.Test;
 
+import java.io.InputStream;
+import java.net.URL;
+
 /**
  * @Author shitongtong
  * <p>
@@ -119,17 +122,23 @@ public class TestMain {
         String phone = "18940000010";
         phone = "18800000000";
         phone = "18221656604";
+        phone = "18850216033";
+        phone = "13916593205";
         String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
         System.out.println(password);
         //4f4422c4ee71d91c247bfa4d7d73a508f5115ec48e4f6357c05e8aee05202158c9914930cf053561144401954f9aaf6e82aec1169fb5ba4252946e243943d11c
         //7e95300fc527cf8b6021405379e30d8197745aabe094e8f536ee04c1d52ba29fe0725af550120b0de150bc829480913327b7640a572f56463ad2dc0c285f7477
         //e9ae32856aac6b332c07c142ccbfc125b597c36943a87d9c461804222c818cdd40e732856da5b83ae72b2b12afc1633fd4f466b53aa21fe9ca911eae782f4bcd
+        //23bba85e77e937bb30da0aed47e1676ccbe455aecb600eda09c3be1d0576dab1b7b0c58eb128797bf58b2726e73d028da9773882e7e04ac5fadd7247a9e240d4
+        //47108679cdf08cc75a483db1019adada5c127e4518e94445b02cc8be2f55d6da3d3091f65e9272484c7c3aabc9cdfb3bead8b07283196796ae207390fed9241d
         long timestamp = 5454654564L;
         String realPwd = SecurityUtil.hashSha512Hex(password + timestamp);
         System.out.println(realPwd);
         //ff86ead6bbecb1abf591c0418a35aa0ba948bc578edea8b58e07d9ba9a16ad3e670e9bad2f2a8681bb4331e26d47187baecd43b709e6bb750a73667d2328fa10
         //37a6f140c32e875705aed9840c926911aa15c488f68cc9f8ab069d569f14d0438107209f56e00fb80d08a91f208e3af323c3ba31250ba201811273f93305daa4
         //7d0bbfdd1e06447fc4d915dfbf149afe06b54933f6046ec0cf4a778278f832ca2d5fed054c862f24fb90b7b61f36799a5aede2d15b01158b2ad2ef735ad9b484
+        //149171f465b2238b9c9ca7aed8751de845714e7bcfa322718e90739f896ef2925109ebaa76a4944c1402abe6d003c4c48a0f1dcb421c0316484e60d7a42a1929
+        //4074406d96c086055a86b9cd3975d8d28e81d1258412c1972e1fbfb0b8e19d79fa855d13056141cda601e8542860f095b4574163ea5b0ef2b290479e33c801bb
     }
 
     @Test
@@ -148,7 +157,7 @@ public class TestMain {
     }
 
     @Test
-    public void test7(){
+    public void test7() {
         String phone = "18221593584";
         phone = "15538132882";
         phone = "18175136606";
@@ -157,29 +166,104 @@ public class TestMain {
         String password = SecurityUtil.hashSha512Hex(phone + "&" + "123456" + ":onlyhi");
         System.out.println(password);
 //        String password = "aeccbeac21dc6ed6bb6e8a18b649526dfc2d5d0ff35cbea54ab31338eeca5e19095fb783ee5213e62e6ce1c265c23744927be00866502e0952e5d4d10af0a983";
-        long timestamp =  1510811031;
+        long timestamp = 1510811031;
         String realPwd = SecurityUtil.hashSha512Hex(password + timestamp);
         System.out.println(realPwd);
     }
 
     @Test
-    public void test8(){
+    public void test8() {
         String loginName = "admin";
         String password = "!qaz2wsx3edc";
         loginName = "cctest0";
-        loginName = "renyue";
-        password="123456";
+//        loginName = "renyue";
+        password = "1234567";
         String password1 = SecurityUtil.hashSha512Hex(loginName + "&" + password + ":onlyhi");
         System.out.println(password1);
         //04f814ab0c87f863f727168b906791448de7a81a26ba5fa27ea408320b7c05525cd0c88318867cc64096566252c43de9fc0bc98d8954a8c32403e147f8f8cda8
         //5ee8795030e3dcb37929621bad0daf14504a4a0a8362a632922983162193cb7b1cdbe767b7782b3cc8b70692f3a8d4f4a02b30945674ba900dabfadf2af62b1e
+        //9dd3ef1cb8e0e7fe3cb9231822aabc48d4766b82578658c9dd0daab3b473ebc623f210f74eefe69e1c9d032aea1a4842f5b17870a49c5e28d2350ca65d8d5949
         //924cee02caf01b9d1913924d54b4dffe77029eebde27eec3c467f47594cef8d5491b36158e628b1967770a1a5ac5cbad15e7055f6a639142e41d4b35030a508f
-        long timestamp =  5454654564L;
+        long timestamp = 5454654564L;
         String password2 = SecurityUtil.hashSha512Hex(password1 + timestamp);
         System.out.println(password2);
         //45eb94a3ac780f9efd63a7f79ed826804961869a8eae517062e8b3e97bd28eb209c242ce32ee908556f915693ae6bbd657cdb5ad6e713fb571ed19082635e6d0
         //12379cb453567a1b5bfb9175a1b62a701e274cfb5f91ea3c15d5ff425ffb5b71b97ea132a96da7daf1bcc1d5bd3512b243a5954b4d69cd5e93266e7430ba14b4
+        //fe31e796713500eea0c2e4d3a605f9c22f07f5add3adfd95b4012fdb0d34650d997d9a91ab4179eed6b1fc65f58c1358cca2da1dbda2abe17525f180b5c579c7
         //eda46cc3009625ef32d9d80b749c06c970ccec253c003223750698e6a8ae2b8459da9b900d54ed5224ba98237adc6428e3c67866001c74e480d1d2e623010deb
+    }
+
+    @Test
+    public void test9() {
+        String s = SecurityUtil.hashMD5Hex("79ab6c141bd84eb08621b98063fe23af" + "a8e0dbb830d44c9f8e7e5a4e32c62c53" + "1023862448" + "1516067297");
+        System.out.println(s);
+    }
+
+    @Test
+    public void test10() {
+        String pwd = "868fe944c973adcb6904d75c6eab5003c003e57366c2bd90fc21a7543ebc9acf9053c0de97917fe518e71cdf3f57f44613558465aed03aae85070c031b4c115f";
+        long timestamp = 1516347916L;
+        String password = SecurityUtil.hashSha512Hex(pwd + timestamp);
+        System.out.println(password);
+    }
+
+    @Test
+    public void test11() throws Exception {
+        long startTime = System.currentTimeMillis();
+//        String imageUrl = "http://clienttest.haiketang.net/uploadPath/courseware/846c6983514e440ab1a666e17ed8be9e/image/1516859807752_-1483080243/0.png";
+//        String imageUrlBase = "http://static.onlyhi.cn/uploadPath/courseware/4496AA9F781A4BB994753790CAF15D93/20180310125816299/";
+        String imageUrlBase = "http://client.onlyhi.cn/uploadPath/courseware/4496AA9F781A4BB994753790CAF15D93/20180310125816299/";
+//        String imageUrlBase = "http://47.100.14.33:20027/uploadPath/courseware/4496AA9F781A4BB994753790CAF15D93/20180310125816299/";
+//        String imageUrlBase = "http://clienttest.haiketang.net/uploadPath/courseware/86074E814DFB40D7B75E30F6BFFE61FD/20180310152532737/";
+//        String imageUrlBase = "http://static.onlyhi.cn/uploadPath/courseware/test20020/20180212104932300/";
+
+        for (int i = 0; i < 116; i++) {
+            long l = System.currentTimeMillis();
+            String imageUrl = imageUrlBase + i + ".png";
+            URL url = new URL(imageUrl);
+            InputStream is = url.openStream();
+            String hex = SecurityUtil.hashMD5Hex(is);
+            System.out.println(hex);
+            System.out.println(i + ": " + (System.currentTimeMillis() - l) / 1000 + "s");
+        }
+        System.out.println("总时间: " + (System.currentTimeMillis() - startTime) / 1000 + "s"); //31s
+
+    }
+
+    @Test
+    public void test11_1() throws Exception {
+        String imageUrl = "http://clienttest.haiketang.net/uploadPath/courseware/21f9d18ed1234139a8a2e590e050bfd8/20180312134945938/0.png";
+        URL url = new URL(imageUrl);
+        InputStream is = url.openStream();
+        String hex = SecurityUtil.hashMD5Hex(is);
+        System.out.println(hex);
+    }
+
+    @Test
+    public void test12() {
+        String s = ",,,";
+        String[] split = s.split(",");
+        System.out.println(split.length);
+    }
+
+    @Test
+    public void test13() {
+        String phone = "18888888880";
+        String password = "csy123456";
+        String password1 = SecurityUtil.hashSha512Hex(phone + "&" + password + ":onlyhi");
+        System.out.println(password1);
+        long timestamp = 1518071798000L;
+        String password2 = SecurityUtil.hashSha512Hex(password1 + timestamp);
+        System.out.println(password2);
+        String pwd = "ef105c2b38c8c0549dddfd0e3330c73de297750eb937495a49376049f1014612262951dbb107ddc5ebdbc8e8e3e280cfb54b35980cc8159b76f805d0394ae36c";
+    }
+
+    @Test
+    public void test14() {
+        String name = "admin";
+        String password = "admin123";
+        String md5Hex = SecurityUtil.hashMD5Hex(password);
+        System.out.println(md5Hex);
     }
 
 }

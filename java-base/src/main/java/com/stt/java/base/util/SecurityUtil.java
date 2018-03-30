@@ -4,6 +4,8 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.codec.digest.HmacUtils;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,6 +22,7 @@ public final class SecurityUtil {
 
     private static final Map<String, String> sha1Map = new ConcurrentHashMap<>(INITIAL_CAPACITY);//SHA512缓存类
     private static final Map<String, String> md5Map = new ConcurrentHashMap<>(INITIAL_CAPACITY);//MD5缓存类
+    private static final Map<InputStream, String> md5isMap = new ConcurrentHashMap<>(INITIAL_CAPACITY);//MD5缓存类
     private static final Map<String, String> hmacMd5Map = new ConcurrentHashMap<>(INITIAL_CAPACITY);//HMACMD5缓存类
     private static final Map<String, String> encodeBASE64Map = new ConcurrentHashMap<>(INITIAL_CAPACITY);//EncodeBASE64缓存类
     private static final Map<String, String> decodeBASE64Map = new ConcurrentHashMap<>(INITIAL_CAPACITY);//DecodeBASE64缓存类
@@ -60,6 +63,31 @@ public final class SecurityUtil {
             }
         }
         return data;
+    }
+
+    /**
+     * 将字节流转换成MD5小写 注：转换是单向的，不可逆
+     *
+     * @param is
+     * @return
+     */
+    public static String hashMD5Hex(InputStream is) {
+        if (is == null) {
+            return null;
+        }
+        if (md5isMap.containsKey(is)) {
+            return md5isMap.get(is);//返回缓存中的数据
+        } else {
+            String result = null;//转换
+            try {
+                result = DigestUtils.md5Hex(is);
+                md5isMap.put(is, result);//数据写入缓存
+                return result;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
     /**
@@ -120,8 +148,8 @@ public final class SecurityUtil {
         }
         return base64String;
     }
-    
+
     public static void main(String[] args) {
-		System.out.println(hashSha512Hex("Haikt!@#"));
-	}
+        System.out.println(hashSha512Hex("Haikt!@#"));
+    }
 }

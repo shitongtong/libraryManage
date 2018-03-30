@@ -44,4 +44,16 @@ public class StringTest {
 //        System.out.println(s);
     }
 
+    @Test
+    public void test() {
+        String freetimeDate = "2018-01-01"; //年月日
+        System.out.println(freetimeDate.substring(0, freetimeDate.length() - 3));
+    }
+
+    @Test
+    public void test1() {
+        String a = "fff" + null;
+        System.out.println(a);
+    }
+
 }

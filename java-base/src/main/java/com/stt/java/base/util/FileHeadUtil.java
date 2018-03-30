@@ -2,6 +2,7 @@ package com.stt.java.base.util;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 /**
@@ -13,14 +14,14 @@ import java.util.HashMap;
  */
 public class FileHeadUtil {
     // 缓存文件头信息-文件头信息
-    public static final HashMap<String, String> mFileTypes = new HashMap<String, String>();
+    public static final HashMap<String, String> mFileTypes = new HashMap<>();
     static {
         // images
-        mFileTypes.put("FFD8FF", "jpg");
+        mFileTypes.put("FFD8FF", "jpg"); // FFD8FFxx都是jpg，比如 FFD8FFE0、FFD8FFE1
         mFileTypes.put("89504E47", "png");
         mFileTypes.put("47494638", "gif");
         mFileTypes.put("49492A00", "tif");
-        mFileTypes.put("424D", "bmp");
+        mFileTypes.put("424D5A14", "bmp");
         //
         mFileTypes.put("41433130", "dwg"); // CAD
         mFileTypes.put("38425053", "psd");
@@ -117,9 +118,40 @@ public class FileHeadUtil {
         return builder.toString();
     }
 
+    private static String getFileHeader(InputStream is) {
+        String value = null;
+        try {
+            byte[] b = new byte[4];
+            /*
+             * int read() 从此输入流中读取一个数据字节。 int read(byte[] b) 从此输入流中将最多 b.length
+             * 个字节的数据读入一个 byte 数组中。 int read(byte[] b, int off, int len)
+             * 从此输入流中将最多 len 个字节的数据读入一个 byte 数组中。
+             */
+            is.read(b, 0, b.length);
+            value = bytesToHexString(b);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (null != is) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return value;
+    }
+
     public static void main(String[] args) throws Exception {
-        String filePath = "D:\\testoffice2pdf\\test4.pdf";
-        final String fileType = getFileType(filePath);
-        System.out.println(fileType);
+//        String filePath = "D:\\testoffice2pdf\\test4.pdf";
+//        final String fileType = getFileType(filePath);
+//        System.out.println(fileType);
+
+//        String filePath = "D:\\image\\trainBanner.jpg";
+        String filePath = "D:\\testoffice2pdf\\转换有问题的\\概括文章主要内容.pdf";
+        String fileHeader = getFileHeader(filePath);
+        System.out.println(fileHeader);
+//        System.out.println(fileHeader.substring(0,6));
     }
 }

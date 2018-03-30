@@ -1,9 +1,13 @@
 package com.stt.util2;
 
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.codec.digest.HmacUtils;
+import org.apache.commons.lang3.StringUtils;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 本工具类包含了MD5、SHA512、HMACMD5、BASE64算法
  *
- * @author XuYao
+ * @author csy
  */
 public final class SecurityUtil {
 
@@ -20,6 +24,7 @@ public final class SecurityUtil {
 
     private static final Map<String, String> sha1Map = new ConcurrentHashMap<>(INITIAL_CAPACITY);//SHA512缓存类
     private static final Map<String, String> md5Map = new ConcurrentHashMap<>(INITIAL_CAPACITY);//MD5缓存类
+    private static final Map<InputStream, String> md5isMap = new ConcurrentHashMap<>(INITIAL_CAPACITY);//MD5缓存类
     private static final Map<String, String> hmacMd5Map = new ConcurrentHashMap<>(INITIAL_CAPACITY);//HMACMD5缓存类
     private static final Map<String, String> encodeBASE64Map = new ConcurrentHashMap<>(INITIAL_CAPACITY);//EncodeBASE64缓存类
     private static final Map<String, String> decodeBASE64Map = new ConcurrentHashMap<>(INITIAL_CAPACITY);//DecodeBASE64缓存类
@@ -31,7 +36,7 @@ public final class SecurityUtil {
      * @return
      */
     public static String hashSha512Hex(String data) {
-        if (ValidateUtil.isNotEmpty(data)) {
+        if (StringUtils.isNotEmpty(data)) {
             if (sha1Map.containsKey(data)) {
                 return sha1Map.get(data);//返回缓存中的数据
             } else {
@@ -50,7 +55,7 @@ public final class SecurityUtil {
      * @return
      */
     public static String hashMD5Hex(String data) {
-        if (ValidateUtil.isNotEmpty(data)) {
+        if (StringUtils.isNotEmpty(data)) {
             if (md5Map.containsKey(data)) {
                 return md5Map.get(data);//返回缓存中的数据
             } else {
@@ -63,6 +68,31 @@ public final class SecurityUtil {
     }
 
     /**
+     * 将字节流转换成MD5小写 注：转换是单向的，不可逆
+     *
+     * @param is
+     * @return
+     */
+    public static String hashMD5Hex(InputStream is) {
+        if (is == null) {
+            return null;
+        }
+        if (md5isMap.containsKey(is)) {
+            return md5isMap.get(is);//返回缓存中的数据
+        } else {
+            String result = null;//转换
+            try {
+                result = DigestUtils.md5Hex(is);
+                md5isMap.put(is, result);//数据写入缓存
+                return result;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    /**
      * 将字符串转换成HmacMD5小写 注：转换是单向的，不可逆
      *
      * @param data
@@ -70,7 +100,7 @@ public final class SecurityUtil {
      * @return
      */
     public static String hashHmacMD5Hex(String key, String data) {
-        if (ValidateUtil.isNotEmpty(data)) {
+        if (StringUtils.isNotEmpty(data)) {
             String sign = key + data;//拼装缓存Map中的Key值
             if (hmacMd5Map.containsKey(sign)) {
                 return hmacMd5Map.get(sign);//返回缓存中的数据
@@ -90,7 +120,7 @@ public final class SecurityUtil {
      * @return
      */
     public static String encodeBASE64(String binaryData) {
-        if (ValidateUtil.isNotEmpty(binaryData)) {
+        if (StringUtils.isNotEmpty(binaryData)) {
             if (encodeBASE64Map.containsKey(binaryData)) {
                 return encodeBASE64Map.get(binaryData);//返回缓存中的数据
             } else {
@@ -109,7 +139,7 @@ public final class SecurityUtil {
      * @return
      */
     public static String decodeBASE64(String base64String) {
-        if (ValidateUtil.isNotEmpty(base64String)) {
+        if (StringUtils.isNotEmpty(base64String)) {
             if (decodeBASE64Map.containsKey(base64String)) {
                 return decodeBASE64Map.get(base64String);//返回缓存中的数据
             } else {
@@ -120,8 +150,4 @@ public final class SecurityUtil {
         }
         return base64String;
     }
-    
-    public static void main(String[] args) {
-		System.out.println(hashSha512Hex("Haikt!@#"));
-	}
 }

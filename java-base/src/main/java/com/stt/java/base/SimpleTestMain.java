@@ -1,5 +1,6 @@
 package com.stt.java.base;
 
+import com.alibaba.fastjson.JSONObject;
 import com.stt.java.base.util.SecurityUtil;
 import org.junit.Test;
 
@@ -26,6 +27,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -722,22 +725,154 @@ public class SimpleTestMain {
 
     @Test
     public void test30() throws ParseException {
-        String dateTime = "2018-01";
+        String dateTime = "2018-02";
         String[] split = dateTime.split("-");
         String yearStr = split[0];
         String monthStr = split[1];
         int year = Integer.parseInt(yearStr);
         int month = Integer.parseInt(monthStr);
         Calendar calendar = Calendar.getInstance();
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, month - 1);
-        int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        calendar.set(Calendar.DATE, 1);
+        calendar.roll(Calendar.DATE, -1);
+        int days = calendar.get(Calendar.DATE);
+//        int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         System.out.println("指定年月天数：" + days);
         int weeks = calendar.getActualMaximum(Calendar.WEEK_OF_MONTH);
         System.out.println("指定年月周数：" + weeks);
         calendar.set(Calendar.DAY_OF_MONTH, days);
         int week = calendar.get(Calendar.DAY_OF_WEEK) - 1;
         System.out.println("指定日期是周几：" + week);
+    }
+
+    @Test
+    public void test31() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("dsadsa");
+        sb.append(System.lineSeparator());
+        sb.append("hehehe");
+        sb.append(System.lineSeparator());
+        System.out.println("fafsa" + System.lineSeparator() + "dasfasf");
+        System.out.println(sb.toString());
+        System.out.println(Arrays.toString(sb.toString().split(System.lineSeparator())));
+        File file = new File("");
+        System.out.println(file.exists());
+    }
+
+    @Test
+    public void test32() {
+        String aacDirPath = "D:\\www\\recordDir\\20171220";
+        File aacDir = new File(aacDirPath);
+        String[] filePaths = aacDir.list();
+        System.out.println(Arrays.toString(filePaths));
+    }
+
+    /**
+     * java传参 值传递和引用传递问题
+     */
+    @Test
+    public void test33() {
+        int a;
+        int b;
+        StringBuffer c;
+        StringBuffer d;
+        a = 0;
+        b = a;
+        c = new StringBuffer("This is c");
+        d = c;
+
+        a = 2;
+        c.append("!!");
+
+        System.out.println("a=" + a);
+        System.out.println("b=" + b);
+        System.out.println("c=" + c);
+        System.out.println("d=" + d);
+    }
+
+    @Test
+    public void test34() {
+        StringBuffer sb = new StringBuffer("Hello ");
+
+        System.out.println("Before change, sb = " + sb);
+
+        changeData(sb);
+
+        System.out.println("After changeData(n), sb = " + sb);
+
+    }
+
+    public static void changeData(StringBuffer strBuf) {
+
+        StringBuffer sb2 = new StringBuffer("Hi ");
+
+        strBuf = sb2;
+
+        sb2.append("World!");
+    }
+
+
+    @Test
+    public void test35() {
+        String date1 = "2017-01-05";
+        String date2 = "2017-01-04";
+        String date3 = "2017-01-03";
+        String date4 = "2017-01-02";
+        String date5 = "2017-01-02";
+
+        Set<String> dateSet = new TreeSet<>();
+        dateSet.add(date1);
+        dateSet.add(date2);
+        dateSet.add(date3);
+        dateSet.add(date4);
+        dateSet.add(date5);
+        System.out.println(dateSet);
+
+        List<String> list = new ArrayList<>();
+        list.add(date1);
+        list.add(date2);
+        list.add(date3);
+        list.add(date4);
+        list.add(date5);
+        list = removeDuplicate(list);
+        System.out.println(list);
+
+    }
+
+    /**
+     * 去除list中重复元素
+     *
+     * @param list
+     * @return
+     */
+    public static List removeDuplicate(List list) {
+        List newList = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            Object o = list.get(i);//获取传入集合对象的每一个元素
+            if (!newList.contains(o)) {   //查看新集合中是否有指定的元素，如果没有则加入
+                newList.add(o);
+            }
+        }
+        return newList;  //返回集合
+    }
+
+
+    @Test
+    public void test36() {
+        String data = "{\\\\\\\\\\\\\\\"color\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"(0,0,0)\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"drawMode\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"05\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"lineWidth\\\\\\\\\\\\\\\":1,\\\\\\\\\\\\\\\"points\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"407,161,758797|586,185,758797|\\\\\\\\\\\\\\\",\\\\\\\\\\\\\\\"size\\\\\\\\\\\\\\\":21,\\\\\\\\\\\\\\\"text\\\\\\\\\\\\\\\":\\\\\\\\\\\\\\\"沉醉，认真，痴迷\\\\\\\\\\\\\\\"}";
+        data = "{\"methodtype\":\"10\",\"methodparam\":\"{\\\"boardHeight\\\":719,\\\"boardId\\\":\\\"board0\\\",\\\"boardWidth\\\":1279,\\\"courseId\\\":\\\"94bd70541afc4c8fbe8b7fe9496793c1\\\",\\\"drawData\\\":\\\"[\\\\n]\\\\n\\\",\\\"pageNum\\\":1,\\\"time\\\":172867}\",\"scaling\":\"\"}";
+        data = data.replace("\\", "");
+        JSONObject jsonObject = JSONObject.parseObject(data);
+        String drawMode = jsonObject.getString("drawMode");
+        String size = jsonObject.getString("size"); //文字大小
+        String text = jsonObject.getString("text"); //文字内容
+        String textColor = jsonObject.getString("textColor");   //文字颜色
+        System.out.println(drawMode);
+        System.out.println(size);
+        System.out.println(text);
+        System.out.println(textColor);
     }
 
 }

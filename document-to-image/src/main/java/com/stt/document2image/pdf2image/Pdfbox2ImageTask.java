@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Pdfbox2ImageTask extends RecursiveAction {
     private static final long serialVersionUID = -3611254198265061729L;
 
-    public static final int threshold = 50;
+    public static final int threshold = 20;
     private PDFRenderer renderer;
     private String savePath;
     private String fileNameNoSuffix;
@@ -42,14 +42,22 @@ public class Pdfbox2ImageTask extends RecursiveAction {
         //如果任务足够小就计算任务
         boolean canCompute = (end - start) < threshold;
         if (canCompute) {
+            BufferedImage image = null; //296   200:144s; 100:55s; 75:42s   50:28s
+            String filename = null;
             for (int i = start; i < end; i++) {
-                BufferedImage image = null;  //296   200:144s; 100:55s; 75:42s   50:28s
                 try {
                     image = renderer.renderImageWithDPI(i, 100);
-                    String filename = savePath + File.separator + fileNameNoSuffix + "_" + (i + 1) + ".jpg";
+                    int i1 = 1 / 0;
+                    filename = savePath + File.separator + fileNameNoSuffix + "_" + (i + 1) + ".png";
                     ImageIO.write(image, "PNG", new File(filename));    //正常生成图片
                 } catch (IOException e) {
+                    System.out.println("111111111");
                     e.printStackTrace();
+                    return;
+                }catch (Exception e){
+                    System.out.println("222222222");
+                    e.printStackTrace();
+                    return;
                 }
                 atomicInteger.incrementAndGet();
             }
@@ -76,6 +84,9 @@ public class Pdfbox2ImageTask extends RecursiveAction {
         String filePath = "D:\\testoffice2pdf\\courseware\\pdf\\Java基础PPT.pdf";
         filePath = "D:\\testoffice2pdf\\courseware\\pdf\\第3章第1节　钠及其重要化合物.pdf";
         filePath = "D:\\testoffice2pdf\\courseware\\pdf\\高三英语秋季精品课4.pdf";
+        filePath = "D:\\testoffice2pdf\\转换有问题的\\概括文章主要内容.pdf";
+        filePath = "D:\\testoffice2pdf\\2016-2017 中国教育培训行业蓝皮书 .pdf";
+//        filePath = "D:\\testoffice2pdf\\大文件.pdf";
 
         File file = new File(filePath);
         String fileNameNoSuffix = file.getName().substring(0, file.getName().indexOf("."));

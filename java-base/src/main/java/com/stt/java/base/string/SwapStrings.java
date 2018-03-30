@@ -91,5 +91,12 @@ public class SwapStrings {
         SwapStrings swapStrings = new SwapStrings();
         swapStrings.swapStr(s1,s2);
         swapStrings.print();
+
+        System.out.println("------直接交换2------");
+        String s2_1 = new String("s1");
+        String s2_2 = new String("s2");
+        print(s2_1, s2_2);
+        swap(s2_1, s2_2);
+        print(s2_1, s2_2);
     }
 }
