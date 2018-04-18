@@ -875,4 +875,9 @@ public class SimpleTestMain {
         System.out.println(textColor);
     }
 
+    @Test
+    public void testDouble() {
+        System.out.println(33.3d - 11.4d);
+    }
+
 }

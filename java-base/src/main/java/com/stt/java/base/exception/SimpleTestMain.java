@@ -24,16 +24,16 @@ public class SimpleTestMain {
     }
 
     @Test
-    public void test1(){
+    public void test1() {
         System.out.println(returnTest());
     }
 
-    public static int returnTest(){
+    public static int returnTest() {
         try {
             return 1;
-        }catch (Exception e){
+        } catch (Exception e) {
             return 2;
-        }finally {
+        } finally {
             return 3;
         }
     }
