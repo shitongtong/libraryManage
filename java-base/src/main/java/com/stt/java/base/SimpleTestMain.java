@@ -880,4 +880,69 @@ public class SimpleTestMain {
         System.out.println(33.3d - 11.4d);
     }
 
+    @Test
+    public void test37() {
+        String property = System.getProperty("sun.boot.class.path");//JVM自带的jar或zip包（Bootstrat)
+        System.out.println(property);
+        //C:\Program Files\Java\jdk1.8.0_121\jre\lib\resources.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\rt.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\sunrsasign.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\jsse.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\jce.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\charsets.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\jfr.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\classes
+    }
+
+    @Test
+    public void test38() {
+        String property = System.getProperty("java.ext.dirs");//JRE_HOME/lib/ext下的jar包（Extension)
+        System.out.println(property);//C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext;C:\Windows\Sun\Java\lib\ext
+    }
+
+    @Test
+    public void test39() {
+        String property = System.getProperty("java.class.path");//用户自定义目录，顺序为：当前目录（.），CLASSPATH，-cp；
+        System.out.println(property);
+        //D:\softwareInstallDir\IntelliJ IDEA 2016.1.1\lib\idea_rt.jar;
+        // D:\softwareInstallDir\IntelliJ IDEA 2016.1.1\plugins\junit\lib\junit-rt.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\charsets.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\deploy.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\access-bridge-64.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\cldrdata.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\dnsns.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\jaccess.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\jfxrt.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\localedata.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\nashorn.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunec.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunjce_provider.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunmscapi.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunpkcs11.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\zipfs.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\javaws.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\jce.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\jfr.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\jfxswt.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\jsse.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\management-agent.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\plugin.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\resources.jar;
+        // C:\Program Files\Java\jdk1.8.0_121\jre\lib\rt.jar;
+        // D:\project_git\libraryManage\java-base\target\test-classes;
+        // D:\project_git\libraryManage\java-base\target\classes;
+        // D:\maven\repository\com\alibaba\fastjson\1.2.12\fastjson-1.2.12.jar;
+        // D:\maven\repository\mysql\mysql-connector-java\5.1.39\mysql-connector-java-5.1.39.jar;
+        // D:\maven\repository\junit\junit\4.12\junit-4.12.jar;
+        // D:\maven\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;
+        // D:\maven\repository\org\springframework\spring-core\4.2.3.RELEASE\spring-core-4.2.3.RELEASE.jar;
+        // D:\maven\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;
+        // D:\maven\repository\commons-codec\commons-codec\1.10\commons-codec-1.10.jar
+    }
+
+    @Test
+    public void test40() {
+        System.out.println((0.1d + 0.2d) == 0.3d);
+    }
+
 }

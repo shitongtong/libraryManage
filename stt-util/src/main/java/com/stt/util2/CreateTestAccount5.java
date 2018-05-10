@@ -24,9 +24,9 @@ public class CreateTestAccount5 {
     public static void main(String[] args) throws SQLException {
         Connection conn = DBPool.getInstance().getDruidConnection();
         //创建cc
-//        List<User> ccList = createCC(conn);
+        List<User> ccList = createCC(conn);
         //创建cr
-//        List<User> crList = createCR(conn);
+        List<User> crList = createCR(conn);
         //创建教学监课
         List<User> tsList = createTS(conn);
         //创建leads
