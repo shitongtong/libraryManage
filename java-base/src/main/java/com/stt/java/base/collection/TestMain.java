@@ -2,9 +2,13 @@ package com.stt.java.base.collection;
 
 import org.junit.Test;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017-02-21.
@@ -48,4 +52,29 @@ public class TestMain {
         System.out.println(list);
     }
 
+    @Test
+    public void testMap1() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
+        Map<String, String> map = new HashMap<String, String>(1);
+        map.put("hahaha", "hollischuang");
+        map.put("hahaha1", "hollischuang");
+        map.put("hahaha2", "hollischuang");
+
+        Class<?> mapType = map.getClass();
+
+        Method capacity = mapType.getDeclaredMethod("capacity");
+        capacity.setAccessible(true);
+        System.out.println("capacity : " + capacity.invoke(map));
+
+        Field size = mapType.getDeclaredField("size");
+        size.setAccessible(true);
+        System.out.println("size : " + size.get(map));
+
+        Field threshold = mapType.getDeclaredField("threshold");
+        threshold.setAccessible(true);
+        System.out.println("threshold : " + threshold.get(map));
+
+        Field loadFactor = mapType.getDeclaredField("loadFactor");
+        loadFactor.setAccessible(true);
+        System.out.println("loadFactor : " + loadFactor.get(map));
+    }
 }
