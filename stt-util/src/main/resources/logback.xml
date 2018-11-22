@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="GBK"?>
 <configuration scan="false" debug="false">
 
 	<contextName>novel-sprider</contextName>
 	
-    <!-- æŽ§åˆ¶å°è¾“å‡º -->
+    <!-- ¿ØÖÆÌ¨Êä³ö -->
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- æ—¶é—´æ»šåŠ¨è¾“å‡º levelä¸º DEBUG æ—¥å¿— -->
+    <!-- Ê±¼ä¹ö¶¯Êä³ö levelÎª DEBUG ÈÕÖ¾ -->
     <!--<appender name="file-info"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -27,7 +27,7 @@
         </encoder>
     </appender>
 
-    &lt;!&ndash; æ—¶é—´æ»šåŠ¨è¾“å‡º levelä¸º ERROR æ—¥å¿— &ndash;&gt;
+    &lt;!&ndash; Ê±¼ä¹ö¶¯Êä³ö levelÎª ERROR ÈÕÖ¾ &ndash;&gt;
     <appender name="file-error"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
