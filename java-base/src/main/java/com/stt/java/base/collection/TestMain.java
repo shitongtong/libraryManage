@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.SynchronousQueue;
 
 /**
  * Created by Administrator on 2017-02-21.
@@ -37,7 +39,7 @@ public class TestMain {
     }
 
     @Test
-    public void testRemoveList(){
+    public void testRemoveList() {
         List<String> list = new ArrayList<>();
         list.add("hehe");
         list.add("haha");
@@ -45,7 +47,7 @@ public class TestMain {
 //        int size = list.size();
         for (int i = 0; i < list.size(); i++) {
             String s = list.get(i);
-            if (s.equals("hehe")){
+            if (s.equals("hehe")) {
                 list.remove(i);
             }
         }
@@ -76,5 +78,16 @@ public class TestMain {
         Field loadFactor = mapType.getDeclaredField("loadFactor");
         loadFactor.setAccessible(true);
         System.out.println("loadFactor : " + loadFactor.get(map));
+    }
+
+    @Test
+    public void test() throws InterruptedException {
+        BlockingQueue<Integer> queue = new SynchronousQueue<>();
+        queue.put(1);
+        System.out.println(queue.offer(1) + "");
+        System.out.println(queue.offer(2) + "");
+        System.out.println(queue.offer(3) + "");
+        System.out.println(queue.take() + "");
+        System.out.println(queue.size());
     }
 }
