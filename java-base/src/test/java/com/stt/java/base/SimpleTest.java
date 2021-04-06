@@ -6,6 +6,8 @@ import org.springframework.util.Assert;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Administrator on 2017-01-09.
@@ -151,5 +153,30 @@ se:(Z)V
             v2.add(obj2);
         }
         System.out.println(System.currentTimeMillis() - startTime2);//3     7
+    }
+
+    @Test
+    public void test1(){
+        String s = "A man, a plan, a canal: Panama";
+        s = s.toLowerCase();
+        String regEx="[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(s);
+        s = m.replaceAll("").replaceAll("\\s+","");
+        System.out.println(s);
+        char[] chars = s.toCharArray();
+        System.out.println(chars);
+        int i = 0;
+        int j = chars.length-1;
+        while (i<j){
+            if (chars[i]!=chars[j]){
+                System.out.println("false");
+                return;
+            }
+            i++;
+            j--;
+        }
+//        Character.isLetterOrDigit()
+        System.out.println("true");
     }
 }
